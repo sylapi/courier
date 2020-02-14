@@ -1,6 +1,6 @@
 {
     "name": "sylapi/courier",
-    "type": "metapackage",
+    "type": "library",
     "description": "Courier",
     "keywords": [
         "courier",
