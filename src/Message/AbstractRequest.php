@@ -61,9 +61,9 @@ abstract class AbstractRequest
 
             $courier_name = ucfirst(strtolower($this->courierName));
 
-            if (file_exists(__DIR__ . '/../' . $courier_name . '/'.$courier_name.'.php')) {
+            $class_name = "\\Sylapi\\Courier\\" . $courier_name . "\\" . $courier_name;
 
-                $class_name = "\\Sylapi\\Courier\\" . $courier_name . "\\" . $courier_name;
+            if (class_exists($class_name)) {
 
                 $this->adapter = new $class_name();
                 $this->adapter->initialize($this->parameters);
