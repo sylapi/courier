@@ -68,7 +68,7 @@ abstract class AbstractRequest
                 $this->adapter = new $class_name();
                 $this->adapter->initialize($this->parameters);
 
-                if ($this->parameters['sandbox'] == true) {
+                if (isset($this->parameters['sandbox']) && $this->parameters['sandbox'] == true) {
                     $this->adapter->sandbox(true);
                 }
             } else {

@@ -2,6 +2,8 @@
 
 namespace Sylapi\Courier\Message;
 
+use Sylapi\Courier\Common\Helper;
+
 class CreatePackage extends AbstractRequest
 {
     private $address_types = [
@@ -50,6 +52,10 @@ class CreatePackage extends AbstractRequest
 
             if (!isset($this->parameters['options'][$oname])) {
                 $this->parameters['options'][$oname] = $value;
+            }
+
+            if ($oname == 'amount') {
+                $this->parameters['options'][$oname] = Helper::toAmonut($this->parameters['options'][$oname]);
             }
         }
     }

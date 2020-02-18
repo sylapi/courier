@@ -17,4 +17,9 @@ class Helper
         $json = json_encode($data);
         return json_decode($json, true);
     }
+
+    static function toAmonut($price)
+    {
+        return str_replace(array(',', ' '), array('.', ''), $price);
+    }
 }
