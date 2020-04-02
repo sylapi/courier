@@ -2,13 +2,11 @@
 
 namespace Sylapi\Courier\Message;
 
-class GetLabel extends AbstractRequest
+class DeletePackage extends AbstractRequest
 {
     private $label_vars = [
         'tracking_id' => '',
         'custom_id' => '',
-        'format' => '',
-        'type' => ''
     ];
 
     public function validate() {
@@ -28,7 +26,7 @@ class GetLabel extends AbstractRequest
         $adapter = $this->adapter();
         if (!empty($adapter)) {
 
-            $adapter->GetLabel();
+            $adapter->DeletePackage();
 
             if ($adapter->isSuccess()) {
 

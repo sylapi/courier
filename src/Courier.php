@@ -33,6 +33,10 @@ class Courier extends AbstractCourier
         return $this->createRequest('\Sylapi\Courier\Message\CreatePackage', $parameters);
     }
 
+    public function deletePackage(array $parameters = array()) {
+        return $this->createRequest('\Sylapi\Courier\Message\DeletePackage', $parameters);
+    }
+
     public function getLabel(array $parameters = array()) {
         return $this->createRequest('\Sylapi\Courier\Message\GetLabel', $parameters);
     }

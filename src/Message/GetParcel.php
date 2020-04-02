@@ -2,23 +2,11 @@
 
 namespace Sylapi\Courier\Message;
 
-class GetLabel extends AbstractRequest
+class GetParcel extends AbstractRequest
 {
-    private $label_vars = [
-        'tracking_id' => '',
-        'custom_id' => '',
-        'format' => '',
-        'type' => ''
-    ];
-
     public function validate() {
 
-        foreach($this->label_vars as $lname => $value) {
-            if (!isset($this->parameters[$lname])) {
-
-                $this->parameters[$lname] = $value;
-            }
-        }
+        return true;
     }
 
     public function sendData() {
@@ -28,7 +16,7 @@ class GetLabel extends AbstractRequest
         $adapter = $this->adapter();
         if (!empty($adapter)) {
 
-            $adapter->GetLabel();
+            $adapter->GetParcel();
 
             if ($adapter->isSuccess()) {
 
