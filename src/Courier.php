@@ -29,6 +29,10 @@ class Courier extends AbstractCourier
         return $this->createRequest('\Sylapi\Courier\Message\CheckPrice', $parameters);
     }
 
+    public function getPackage(array $parameters = array()) {
+        return $this->createRequest('\Sylapi\Courier\Message\GetPackage', $parameters);
+    }
+
     public function createPackage(array $parameters = array()) {
         return $this->createRequest('\Sylapi\Courier\Message\CreatePackage', $parameters);
     }
