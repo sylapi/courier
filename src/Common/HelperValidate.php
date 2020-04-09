@@ -28,7 +28,7 @@ class HelperValidate
                 $errors[] = 'Country is not ISO';
             }
             if (!self::validatePhone($data['phone'])) {
-                $errors[] = 'Company is not valid';
+                $errors[] = 'Phone is not valid';
             }
             if (!self::validateEmail($data['email'])) {
                 $errors[] = 'Email is not valid';
