@@ -63,6 +63,27 @@ abstract class AbstractCourier
     /**
      * @param array $data
      */
+    public function setProvider(String $provider) {
+        $this->params['provider'] = $provider;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setService(String $service) {
+        $this->params['services'][] = $service;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setParcelShop(String $parcelshop) {
+        $this->params['parcelshop'][] = $parcelshop;
+    }
+
+    /**
+     * @param array $data
+     */
     public function setSender(array $data = array()) {
         $this->params['sender'] = $data;
     }

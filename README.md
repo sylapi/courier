@@ -15,7 +15,8 @@ Courier to install, simply add it to your `composer.json` file:
 ```
 
 
-## Wstępne sprawdzanie adresów przesyłki:
+## Utworzenie obiektu i autoryzacja
+
 ```php
 
 $courier = new Courier('GLS');
@@ -23,6 +24,21 @@ $courier = new Courier('GLS');
 $courier->sandbox(true);
 $courier->setLogin('123456');
 $courier->setPassword('abc12345def');
+
+```
+
+## Wybór dostawdy w przypadku pośrednika przesyłek
+Gdy korzystamy z pośrednika np. Olza, należy przekazać nazwę przewoźnika, który ma dostarczyć przesyłkę.
+W innych wypadakch poniższy parametr nie jest wymagany.
+```php
+
+$courier->setProvider('GLS');
+
+```
+
+## Adres wysyłkowy, dostawy oraz parametry przesyłki
+
+```php
 
 $address = [
     'name' => 'Name Lastname',
@@ -38,23 +54,8 @@ $address = [
 $courier->setSender($address);
 $courier->setReceiver($address);
 
-$courier->setOptions([
-        'weight' => 3.00,
-        'width' => 30.00,
-        'height' => 50.00,
-        'depth' => 10.00,
-        'amount' => 2390.10,
-        'cod' => true,
-        'saturday' => false,
-        'custom' => [
-            'parcel_cost' => 8,
-        ],
-        'references' => 'order #4567',
-        'note' => 'Note'
-    ]);
-```
-
 ## Walidacja danych
+Istnieje możliwość weryfikacji poprawności wczytanych adresów.
 
 ```php
 
@@ -63,6 +64,32 @@ $courier->validateAddress('receiver');
 $validateData = $courier->validateData();
 
 ```
+
+## Podanie danych o przesyłce oraz opcje dodatkowe
+Wszystkie wymiary paczki podawane są w centymetrach, waga w kilogramach.
+Paramtery "custom", są niestandardowymi danymi, które są potrzebne do obsługi wybranego dostawcy.
+
+```php
+
+$courier->setOptions([
+        'weight' => 3.00,
+        'width' => 30.00,
+        'height' => 50.00,
+        'depth' => 10.00,
+        'amount' => 2390.10,
+        'cod' => true,
+        'custom' => [
+            'parcel_cost' => 8,
+        ],
+        'references' => 'order #4567',
+        'note' => 'Note'
+    ]);
+    
+    
+$courier->setParcelShop('ZGO01N');
+
+```
+
 
 ## Dane do przesyłki i generowanie etykiery:
 ```php
