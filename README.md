@@ -86,7 +86,19 @@ $courier->setOptions([
     ]);
     
     
+// Dodanie nazwy parcelshop    
 $courier->setParcelShop('ZGO01N');
+
+```
+
+## Dodawanie opcji dodatkowych
+- SAT : dostawa w sobotę
+- H10 : Dostawa do godziny 10:00
+- H12 : Dostawa do godziny 12:00
+
+```php
+
+$courier->setService('SAT');
 
 ```
 

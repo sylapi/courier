@@ -71,7 +71,7 @@ abstract class AbstractCourier
      * @param array $data
      */
     public function setService(String $service) {
-        $this->params['services'][] = $service;
+        $this->params['service'] = $service;
     }
 
     /**

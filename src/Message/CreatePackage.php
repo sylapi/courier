@@ -54,7 +54,7 @@ class CreatePackage extends AbstractRequest
                 $this->parameters['options'][$oname] = $value;
             }
 
-            if ($oname == 'amount') {
+            if (in_array($oname, ['amount', 'weight', 'depth', 'width', 'height'])) {
                 $this->parameters['options'][$oname] = Helper::toAmonut($this->parameters['options'][$oname]);
             }
         }
