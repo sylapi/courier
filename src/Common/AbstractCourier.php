@@ -3,8 +3,7 @@
 namespace Sylapi\Courier\Common;
 
 /**
- * Class AbstractCourier
- * @package Sylapi\Courier\Common
+ * Class AbstractCourier.
  */
 abstract class AbstractCourier
 {
@@ -28,93 +27,105 @@ abstract class AbstractCourier
     /**
      * @param bool $sandobx
      */
-    public function sandbox(bool $sandobx) {
+    public function sandbox(bool $sandobx)
+    {
         $this->params['sandbox'] = $sandobx;
     }
 
     /**
-     * @param String $login
+     * @param string $login
      */
-    public function setLogin(String $login) {
+    public function setLogin(string $login)
+    {
         $this->params['accessData']['login'] = $login;
     }
 
     /**
-     * @param String $password
+     * @param string $password
      */
-    public function setPassword(String $password) {
+    public function setPassword(string $password)
+    {
         $this->params['accessData']['password'] = $password;
     }
 
     /**
-     * @param String $key
+     * @param string $key
      */
-    public function setKey(String $key) {
+    public function setKey(string $key)
+    {
         $this->params['accessData']['key'] = $key;
     }
 
     /**
-     * @param String $token
+     * @param string $token
      */
-    public function setToken(String $token) {
+    public function setToken(string $token)
+    {
         $this->params['accessData']['token'] = $token;
     }
 
     /**
      * @param array $data
      */
-    public function setProvider(String $provider) {
+    public function setProvider(string $provider)
+    {
         $this->params['provider'] = $provider;
     }
 
     /**
      * @param array $data
      */
-    public function setService(String $service) {
+    public function setService(string $service)
+    {
         $this->params['service'] = $service;
     }
 
     /**
      * @param array $data
      */
-    public function setParcelShop(String $parcelshop) {
+    public function setParcelShop(string $parcelshop)
+    {
         $this->params['parcelshop'][] = $parcelshop;
     }
 
     /**
      * @param array $data
      */
-    public function setSender(array $data = array()) {
+    public function setSender(array $data = [])
+    {
         $this->params['sender'] = $data;
     }
 
     /**
      * @param array $data
      */
-    public function setReceiver(array $data = array()) {
+    public function setReceiver(array $data = [])
+    {
         $this->params['receiver'] = $data;
     }
 
     /**
      * @param array $data
      */
-    public function setOptions(array $data = array()) {
+    public function setOptions(array $data = [])
+    {
         $this->params['options'] = $data;
     }
 
     /**
      * @return mixed
      */
-    public function getParameter(array $keys = array()) {
+    public function getParameter(array $keys = [])
+    {
         $value = $this->params;
-        foreach($keys as $key) {
+        foreach ($keys as $key) {
             if (isset($value[$key])) {
                 $value = $value[$key];
-            }
-            else {
+            } else {
                 return null;
             }
         }
+
         return $value;
     }
 
@@ -129,28 +140,31 @@ abstract class AbstractCourier
     /**
      * @return mixed
      */
-    public function getResponse() {
+    public function getResponse()
+    {
         return $this->response;
     }
 
     /**
      * @return mixed
      */
-    public function getError() {
+    public function getError()
+    {
         return $this->errors;
     }
 
     /**
      * @param array $data
      */
-    protected function setError(array $data = array()) {
+    protected function setError(array $data = [])
+    {
         $this->errors = $data;
     }
 
-    public function debug() {
-
+    public function debug()
+    {
         return [
-            'error' => $this->getError(),
+            'error'    => $this->getError(),
             'response' => $this->getResponse(),
         ];
     }
@@ -158,6 +172,7 @@ abstract class AbstractCourier
     /**
      * @param $class
      * @param array $parameters
+     *
      * @return mixed
      */
     protected function createRequest($class, array $parameters = [])
@@ -166,7 +181,6 @@ abstract class AbstractCourier
 
         if (!empty($this->params)) {
             foreach ($this->params as $key => $value) {
-
                 if (!empty($value)) {
                     $parameters[$key] = $value;
                 }
