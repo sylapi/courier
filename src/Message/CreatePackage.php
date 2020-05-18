@@ -8,48 +8,45 @@ class CreatePackage extends AbstractRequest
 {
     private $address_types = [
         'sender',
-        'receiver'
+        'receiver',
     ];
 
     private $address_vars = [
-        'name' => '',
-        'company' => '',
-        'street' => '',
+        'name'     => '',
+        'company'  => '',
+        'street'   => '',
         'postcode' => '',
-        'city' => '',
-        'country' => '',
-        'phone' => '',
-        'email' => '',
+        'city'     => '',
+        'country'  => '',
+        'phone'    => '',
+        'email'    => '',
     ];
 
     private $options_vars = [
-        'weight' => '',
-        'width' => '',
-        'height' => '',
-        'depth' => '',
-        'amount' => '',
+        'weight'      => '',
+        'width'       => '',
+        'height'      => '',
+        'depth'       => '',
+        'amount'      => '',
         'bank_number' => '',
-        'cod' => false,
-        'saturday' => false,
-        'custom' => null,
-        'references' => '',
-        'note' => '',
+        'cod'         => false,
+        'saturday'    => false,
+        'custom'      => null,
+        'references'  => '',
+        'note'        => '',
     ];
 
-    public function validate() {
-
-        foreach($this->address_types as $tname) {
-            foreach($this->address_vars as $vname => $value) {
-
+    public function validate()
+    {
+        foreach ($this->address_types as $tname) {
+            foreach ($this->address_vars as $vname => $value) {
                 if (!isset($this->parameters[$tname][$vname])) {
-
                     $this->parameters[$tname][$vname] = $value;
                 }
             }
         }
 
-        foreach($this->options_vars as $oname => $value) {
-
+        foreach ($this->options_vars as $oname => $value) {
             if (!isset($this->parameters['options'][$oname])) {
                 $this->parameters['options'][$oname] = $value;
             }
@@ -60,38 +57,34 @@ class CreatePackage extends AbstractRequest
         }
     }
 
-    public function sendData() {
-
+    public function sendData()
+    {
         $this->validate();
 
         $adapter = $this->adapter();
 
         if (!empty($adapter)) {
-
             $adapter->CreatePackage();
 
             if ($adapter->isSuccess()) {
-
                 $result = [
                     'tracking_id' => 0,
-                    'custom_id' => 0,
-                    'price' => 0
+                    'custom_id'   => 0,
+                    'price'       => 0,
                 ];
 
                 $response = $adapter->getResponse();
 
                 if (!empty($response) && is_array($response)) {
                     foreach ($response as $key => $value) {
-
                         if (in_array($key, $result)) {
-
                             $result[$key] = $value;
                         }
                     }
-                }
-                else {
+                } else {
                     $this->setError('Tracking ID is empty');
                     $this->setCode('500');
+
                     return false;
                 }
 
