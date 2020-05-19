@@ -45,6 +45,10 @@ class Courier extends AbstractCourier
         return $this->createRequest('\Sylapi\Courier\Message\GetLabel', $parameters);
     }
 
+    public function getLabels(array $parameters = array()) {
+        return $this->createRequest('\Sylapi\Courier\Message\GetLabels', $parameters);
+    }
+
     public function getParcel(array $parameters = array()) {
         return $this->createRequest('\Sylapi\Courier\Message\GetParcel', $parameters);
     }
