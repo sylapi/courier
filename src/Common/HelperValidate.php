@@ -21,7 +21,7 @@ class HelperValidate
             if (!self::validatePostcode($data['postcode'])) {
                 $errors[] = 'Postcode is not valid';
             }
-            if (!self::validatePostcode($data['city'])) {
+            if (!self::validateCity($data['city'])) {
                 $errors[] = 'City is not valid';
             }
             if (!self::validateCountry($data['country'])) {
@@ -81,6 +81,14 @@ class HelperValidate
     static function validatePostcode($postcode) {
 
         if (!empty($postcode) && strlen($postcode) >= 5) {
+            return true;
+        }
+        return false;
+    }
+
+    static function validateCity($postcode) {
+
+        if (!empty($postcode) && strlen($postcode) >= 3) {
             return true;
         }
         return false;
