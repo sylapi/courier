@@ -2,14 +2,24 @@
 
 namespace Sylapi\Courier\Message;
 
+/**
+ * Class CheckPrice
+ * @package Sylapi\Courier\Message
+ */
 class CheckPrice extends AbstractRequest
 {
 
+    /**
+     * @var array
+     */
     private $address_types = [
         'sender',
         'receiver'
     ];
 
+    /**
+     * @var array
+     */
     private $address_vars = [
         'name' => '',
         'company' => '',
@@ -21,6 +31,9 @@ class CheckPrice extends AbstractRequest
         'email' => '',
     ];
 
+    /**
+     * @var array
+     */
     private $options_vars = [
         'weight' => '',
         'width' => '',
@@ -35,6 +48,9 @@ class CheckPrice extends AbstractRequest
         'note' => '',
     ];
 
+    /**
+     * Check and complet address fields
+     */
     public function validate() {
 
         foreach($this->address_types as $tname) {
@@ -56,6 +72,9 @@ class CheckPrice extends AbstractRequest
     }
 
 
+    /**
+     * Send request to CheckPrice method
+     */
     public function sendData() {
 
         $this->validate();

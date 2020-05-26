@@ -4,13 +4,23 @@ namespace Sylapi\Courier\Message;
 
 use Sylapi\Courier\Common\Helper;
 
+/**
+ * Class CreatePackage
+ * @package Sylapi\Courier\Message
+ */
 class CreatePackage extends AbstractRequest
 {
+    /**
+     * @var array
+     */
     private $address_types = [
         'sender',
         'receiver'
     ];
 
+    /**
+     * @var array
+     */
     private $address_vars = [
         'name' => '',
         'company' => '',
@@ -22,6 +32,9 @@ class CreatePackage extends AbstractRequest
         'email' => '',
     ];
 
+    /**
+     * @var array
+     */
     private $options_vars = [
         'weight' => '',
         'width' => '',
@@ -36,6 +49,9 @@ class CreatePackage extends AbstractRequest
         'note' => '',
     ];
 
+    /**
+     * Check and complet address fields
+     */
     public function validate() {
 
         foreach($this->address_types as $tname) {
@@ -60,6 +76,9 @@ class CreatePackage extends AbstractRequest
         }
     }
 
+    /**
+     * @return bool
+     */
     public function sendData() {
 
         $this->validate();

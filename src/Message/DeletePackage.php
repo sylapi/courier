@@ -2,13 +2,23 @@
 
 namespace Sylapi\Courier\Message;
 
+/**
+ * Class DeletePackage
+ * @package Sylapi\Courier\Message
+ */
 class DeletePackage extends AbstractRequest
 {
+    /**
+     * @var array
+     */
     private $label_vars = [
         'tracking_id' => '',
         'custom_id' => '',
     ];
 
+    /**
+     * Check and complet address fields
+     */
     public function validate() {
 
         foreach($this->label_vars as $lname => $value) {
@@ -19,6 +29,9 @@ class DeletePackage extends AbstractRequest
         }
     }
 
+    /**
+     * Send request to DeletePackage method
+     */
     public function sendData() {
 
         $this->validate();

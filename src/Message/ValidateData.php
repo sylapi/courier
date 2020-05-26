@@ -1,13 +1,23 @@
 <?php
 namespace Sylapi\Courier\Message;
 
+/**
+ * Class ValidateData
+ * @package Sylapi\Courier\Message
+ */
 class ValidateData extends AbstractRequest
 {
+    /**
+     * @var array
+     */
     private $address_types = [
         'sender',
         'receiver'
     ];
 
+    /**
+     * @var array
+     */
     private $address_vars = [
         'name' => '',
         'company' => '',
@@ -19,6 +29,9 @@ class ValidateData extends AbstractRequest
         'email' => '',
     ];
 
+    /**
+     * @var array
+     */
     private $options_vars = [
         'weight' => '',
         'width' => '',
@@ -33,6 +46,9 @@ class ValidateData extends AbstractRequest
         'note' => '',
     ];
 
+    /**
+     * Check and complet package fields
+     */
     public function validate() {
 
         foreach($this->address_types as $tname) {
@@ -53,6 +69,9 @@ class ValidateData extends AbstractRequest
         }
     }
 
+    /**
+     * Send request to ValidateData method
+     */
     public function sendData() {
 
         $this->validate();

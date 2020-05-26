@@ -2,8 +2,16 @@
 
 namespace Sylapi\Courier\Common;
 
+/**
+ * Class HelperValidate
+ * @package Sylapi\Courier\Common
+ */
 class HelperValidate
 {
+    /**
+     * @param $data
+     * @return array|bool
+     */
     static function validateAddress($data)
     {
         $errors = [];
@@ -12,7 +20,7 @@ class HelperValidate
             if (!self::validateName($data['name'])) {
                 $errors[] = 'Name is not valid';
             }
-            if (!self::validateCompany($data['company'])) {
+            if (isset($data['company']) && !self::validateCompany($data['company'])) {
                 $errors[] = 'Company is not valid';
             }
             if (!self::validateStreet($data['street'])) {
@@ -46,6 +54,10 @@ class HelperValidate
         }
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     static function validateName($name) {
 
         $explode = explode(' ', trim($name));
@@ -56,6 +68,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $company
+     * @return bool
+     */
     static function validateCompany($company) {
 
         if (!empty($company)) {
@@ -67,6 +83,10 @@ class HelperValidate
         return true;
     }
 
+    /**
+     * @param $street
+     * @return bool
+     */
     static function validateStreet($street) {
 
         preg_match('!\d+!', $street, $is_number);
@@ -78,6 +98,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $postcode
+     * @return bool
+     */
     static function validatePostcode($postcode) {
 
         if (!empty($postcode) && strlen($postcode) >= 5) {
@@ -86,6 +110,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $postcode
+     * @return bool
+     */
     static function validateCity($postcode) {
 
         if (!empty($postcode) && strlen($postcode) >= 3) {
@@ -94,6 +122,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $country
+     * @return bool
+     */
     static function validateCountry($country) {
 
         if (!empty($country) && strlen($country) == 2) {
@@ -102,6 +134,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $phone
+     * @return bool
+     */
     static function validatePhone($phone) {
 
         if (!empty($phone) && (int)$phone >= 5) {
@@ -110,6 +146,10 @@ class HelperValidate
         return false;
     }
 
+    /**
+     * @param $email
+     * @return bool
+     */
     static function validateEmail($email) {
 
         if (!empty($email) && strlen($email) >= 3 && strstr($email, '@') && strstr($email,'.')) {

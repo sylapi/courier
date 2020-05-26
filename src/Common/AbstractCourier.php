@@ -85,14 +85,14 @@ abstract class AbstractCourier
      * @param array $data
      */
     public function setSender(array $data = array()) {
-        $this->params['sender'] = $data;
+        $this->params['sender'] = $this->address($data);
     }
 
     /**
      * @param array $data
      */
     public function setReceiver(array $data = array()) {
-        $this->params['receiver'] = $data;
+        $this->params['receiver'] = $this->address($data);
     }
 
     /**
@@ -138,6 +138,20 @@ abstract class AbstractCourier
      */
     public function getError() {
         return $this->errors;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function address($date) {
+
+        $fields = ['name', 'company', 'street', 'postcode', 'city', 'country', 'phone', 'email'];
+        foreach($fields as $field) {
+            if (!isset($date[$field])) {
+                $date[$field] = '';
+            }
+        }
+        return $date;
     }
 
     /**
