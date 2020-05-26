@@ -44,6 +44,8 @@ class CreatePackage extends AbstractRequest
         'bank_number' => '',
         'cod' => false,
         'saturday' => false,
+        'hour10' => false,
+        'hour12' => false,
         'custom' => null,
         'references' => '',
         'note' => '',
