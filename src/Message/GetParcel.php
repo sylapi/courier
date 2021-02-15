@@ -3,33 +3,30 @@
 namespace Sylapi\Courier\Message;
 
 /**
- * Class GetParcel
- * @package Sylapi\Courier\Message
+ * Class GetParcel.
  */
 class GetParcel extends AbstractRequest
 {
     /**
      * @return bool
      */
-    public function validate() {
-
+    public function validate()
+    {
         return true;
     }
 
     /**
-     * Send request to GetParcel method
+     * Send request to GetParcel method.
      */
-    public function sendData() {
-
+    public function sendData()
+    {
         $this->validate();
 
         $adapter = $this->adapter();
         if (!empty($adapter)) {
-
             $adapter->GetParcel();
 
             if ($adapter->isSuccess()) {
-
                 $this->setResponse($adapter->getResponse());
             }
 

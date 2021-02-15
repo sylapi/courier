@@ -1,9 +1,9 @@
 <?php
+
 namespace Sylapi\Courier\Message;
 
 /**
- * Class ValidateData
- * @package Sylapi\Courier\Message
+ * Class ValidateData.
  */
 class ValidateData extends AbstractRequest
 {
@@ -12,57 +12,54 @@ class ValidateData extends AbstractRequest
      */
     private $address_types = [
         'sender',
-        'receiver'
+        'receiver',
     ];
 
     /**
      * @var array
      */
     private $address_vars = [
-        'name' => '',
-        'company' => '',
-        'street' => '',
+        'name'     => '',
+        'company'  => '',
+        'street'   => '',
         'postcode' => '',
-        'city' => '',
-        'country' => '',
-        'phone' => '',
-        'email' => '',
+        'city'     => '',
+        'country'  => '',
+        'phone'    => '',
+        'email'    => '',
     ];
 
     /**
      * @var array
      */
     private $options_vars = [
-        'weight' => '',
-        'width' => '',
-        'height' => '',
-        'depth' => '',
-        'amount' => '',
+        'weight'      => '',
+        'width'       => '',
+        'height'      => '',
+        'depth'       => '',
+        'amount'      => '',
         'bank_number' => '',
-        'cod' => false,
-        'saturday' => false,
-        'custom' => null,
-        'references' => '',
-        'note' => '',
+        'cod'         => false,
+        'saturday'    => false,
+        'custom'      => null,
+        'references'  => '',
+        'note'        => '',
     ];
 
     /**
-     * Check and complet package fields
+     * Check and complet package fields.
      */
-    public function validate() {
-
-        foreach($this->address_types as $tname) {
-            foreach($this->address_vars as $vname => $value) {
-
+    public function validate()
+    {
+        foreach ($this->address_types as $tname) {
+            foreach ($this->address_vars as $vname => $value) {
                 if (!isset($this->parameters[$tname][$vname])) {
-
                     $this->parameters[$tname][$vname] = $value;
                 }
             }
         }
 
-        foreach($this->options_vars as $oname => $value) {
-
+        foreach ($this->options_vars as $oname => $value) {
             if (!isset($this->parameters['options'][$oname])) {
                 $this->parameters['options'][$oname] = $value;
             }
@@ -70,19 +67,17 @@ class ValidateData extends AbstractRequest
     }
 
     /**
-     * Send request to ValidateData method
+     * Send request to ValidateData method.
      */
-    public function sendData() {
-
+    public function sendData()
+    {
         $this->validate();
 
         $adapter = $this->adapter();
         if (!empty($adapter)) {
-
             $adapter->ValidateData();
 
             if ($adapter->isSuccess()) {
-
                 $this->setResponse($adapter->getResponse());
             }
 
