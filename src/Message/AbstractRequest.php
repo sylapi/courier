@@ -3,8 +3,7 @@
 namespace Sylapi\Courier\Message;
 
 /**
- * Class AbstractRequest
- * @package Sylapi\Courier\Message
+ * Class AbstractRequest.
  */
 abstract class AbstractRequest
 {
@@ -26,48 +25,58 @@ abstract class AbstractRequest
     protected $adapter = null;
 
     /**
-     * @param String $name
-     * @return String
+     * @param string $name
+     *
+     * @return string
      */
-    public function setCourierName(String $name) {
-        return $this->courierName =  $name;
+    public function setCourierName(string $name)
+    {
+        return $this->courierName = $name;
     }
 
     /**
      * @param array $parameters
+     *
      * @return array
      */
-    public function initialize(array $parameters = array())  {
+    public function initialize(array $parameters = [])
+    {
         return $this->parameters = $parameters;
     }
 
     /**
      * @return mixed
      */
-    public function getResponse() {
+    public function getResponse()
+    {
         return $this->responde['response'];
     }
 
     /**
      * @param $value
+     *
      * @return mixed
      */
-    protected function setResponse($value) {
+    protected function setResponse($value)
+    {
         return $this->responde['response'] = $value;
     }
 
     /**
      * @return |null
      */
-    public function getError() {
+    public function getError()
+    {
         return (!empty($this->responde['error'])) ? $this->responde['error'] : null;
     }
 
     /**
      * @param $value
+     *
      * @return mixed
      */
-    protected function setError($value) {
+    protected function setError($value)
+    {
         if (!empty($value)) {
             return $this->responde['error'] = $value;
         }
@@ -76,35 +85,39 @@ abstract class AbstractRequest
     /**
      * @return mixed
      */
-    public function getCode() {
+    public function getCode()
+    {
         return $this->responde['code'];
     }
 
     /**
      * @param $value
+     *
      * @return mixed
      */
-    protected function setCode($value) {
+    protected function setCode($value)
+    {
         return $this->responde['code'] = $value;
     }
 
     /**
      * @return bool
      */
-    public function isSuccess() {
+    public function isSuccess()
+    {
         return (empty($this->responde['error'])) ? true : false;
     }
 
     /**
      * @return array
      */
-    public function debug() {
-
+    public function debug()
+    {
         return [
-            'name' => $this->courierName,
-            'success' => $this->isSuccess(),
-            'code' => $this->getCode(),
-            'error' => $this->getError(),
+            'name'     => $this->courierName,
+            'success'  => $this->isSuccess(),
+            'code'     => $this->getCode(),
+            'error'    => $this->getError(),
             'response' => $this->getResponse(),
         ];
     }
@@ -112,16 +125,14 @@ abstract class AbstractRequest
     /**
      * @return null
      */
-    protected function adapter() {
-
+    protected function adapter()
+    {
         if ($this->adapter == null) {
-
             $courier_name = ucfirst(strtolower($this->courierName));
 
-            $class_name = "\\Sylapi\\Courier\\" . $courier_name . "\\" . $courier_name;
+            $class_name = '\\Sylapi\\Courier\\'.$courier_name.'\\'.$courier_name;
 
             if (class_exists($class_name)) {
-
                 $this->adapter = new $class_name();
                 $this->adapter->initialize($this->parameters);
 

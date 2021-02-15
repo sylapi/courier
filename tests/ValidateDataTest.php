@@ -9,14 +9,14 @@ class ValidateDataTest extends PHPUnitTestCase
     public function testValidateAddressCorrect()
     {
         $address = [
-            'name' => 'Name Username',
-            'company' => '',
-            'street' => 'Street 1',
+            'name'     => 'Name Username',
+            'company'  => '',
+            'street'   => 'Street 1',
             'postcode' => '12-123',
-            'city' => 'Warszawa',
-            'country' => 'PL',
-            'phone' => '600600600',
-            'email' => 'name@example.com'
+            'city'     => 'Warszawa',
+            'country'  => 'PL',
+            'phone'    => '600600600',
+            'email'    => 'name@example.com',
         ];
 
         $courier = new Courier('GLS');
@@ -59,20 +59,20 @@ class ValidateDataTest extends PHPUnitTestCase
     public function testValidateOptions()
     {
         $options = [
-            'weight' => 3.00,
-            'width' => 30.00,
-            'height' => 50.00,
-            'depth' => 10.00,
-            'amount' => 2.10,
+            'weight'      => 3.00,
+            'width'       => 30.00,
+            'height'      => 50.00,
+            'depth'       => 10.00,
+            'amount'      => 2.10,
             'bank_number' => '29100010001000100010001000',
-            'cod' => false,
-            'saturday' => false,
-            'custom' => [
-                'parcel_cost' => 8,
+            'cod'         => false,
+            'saturday'    => false,
+            'custom'      => [
+                'parcel_cost'  => 8,
                 'label_format' => 'one_label_on_a4_lb_pdf',
             ],
             'references' => 'order #1234',
-            'note' => 'Note'
+            'note'       => 'Note',
         ];
 
         $courier = new Courier('GLS');

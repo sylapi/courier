@@ -3,8 +3,7 @@
 namespace Sylapi\Courier\Message;
 
 /**
- * Class GetLabels
- * @package Sylapi\Courier\Message
+ * Class GetLabels.
  */
 class GetLabels extends AbstractRequest
 {
@@ -14,37 +13,34 @@ class GetLabels extends AbstractRequest
     private $label_vars = [
         'trackings' => [],
         'custom_id' => '',
-        'format' => '',
-        'type' => ''
+        'format'    => '',
+        'type'      => '',
     ];
 
     /**
-     * Check and complet label fields
+     * Check and complet label fields.
      */
-    public function validate() {
-
-        foreach($this->label_vars as $lname => $value) {
+    public function validate()
+    {
+        foreach ($this->label_vars as $lname => $value) {
             if (!isset($this->parameters[$lname])) {
-
                 $this->parameters[$lname] = $value;
             }
         }
     }
 
     /**
-     * Send request to GetLabels method
+     * Send request to GetLabels method.
      */
-    public function sendData() {
-
+    public function sendData()
+    {
         $this->validate();
 
         $adapter = $this->adapter();
         if (!empty($adapter)) {
-
             $adapter->GetLabels();
 
             if ($adapter->isSuccess()) {
-
                 $this->setResponse($adapter->getResponse());
             }
 
