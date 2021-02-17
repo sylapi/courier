@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sylapi\Courier\Abstracts;
@@ -36,12 +37,10 @@ abstract class Parcel implements ParcelContract
         return $this;
     }
 
-
     public function getHeight()
     {
         return $this->height;
     }
-
 
     public function setHeight($height): ParcelContract
     {
@@ -49,7 +48,6 @@ abstract class Parcel implements ParcelContract
 
         return $this;
     }
-
 
     public function getLength()
     {
