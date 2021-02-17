@@ -1,21 +1,22 @@
 <?php
+
 namespace Sylapi\Courier\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
-use Sylapi\Courier\Abstracts\Shipment;
 use Sylapi\Courier\Abstracts\Parcel;
-use Sylapi\Courier\Abstracts\Sender;
 use Sylapi\Courier\Abstracts\Receiver;
+use Sylapi\Courier\Abstracts\Sender;
+use Sylapi\Courier\Abstracts\Shipment;
+use Sylapi\Courier\Contracts\Parcel as ParcelContract;
 use Sylapi\Courier\Contracts\Receiver as ReceiverContract;
 use Sylapi\Courier\Contracts\Sender as SenderContract;
-use Sylapi\Courier\Contracts\Parcel as ParcelContract;
 
 class ShipmentTest extends PHPUnitTestCase
 {
     private $shipmentArray = [
         'referenceId' => 'XYZ',
-        'externalId' => 'ABC',
-        'content' => 'Test...'
+        'externalId'  => 'ABC',
+        'content'     => 'Test...',
     ];
 
     private function getShipmentMock()
@@ -64,7 +65,7 @@ class ShipmentTest extends PHPUnitTestCase
             ->setParcel($parcel)
             ->setReceiver($receiver)
             ->setSender($sender);
-        
+
         $this->assertEquals($shipmentArray['referenceId'], $shipment->getReferenceId());
         $this->assertEquals($shipmentArray['externalId'], $shipment->getExternalId());
         $this->assertEquals($shipmentArray['content'], $shipment->getContent());
@@ -74,5 +75,4 @@ class ShipmentTest extends PHPUnitTestCase
         $this->assertInstanceOf(SenderContract::class, $shipment->getSender());
         $this->assertInstanceOf(ParcelContract::class, $shipment->getParcel());
     }
-
 }

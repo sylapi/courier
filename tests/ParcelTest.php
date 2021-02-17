@@ -1,4 +1,5 @@
 <?php
+
 namespace Sylapi\Courier\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
@@ -8,7 +9,7 @@ class ParcelTest extends PHPUnitTestCase
 {
     private $parcelArray = [
         'weight' => 10.5,
-        'width' => 100,
+        'width'  => 100,
         'height' => 200,
         'length' => 50,
     ];
@@ -19,6 +20,7 @@ class ParcelTest extends PHPUnitTestCase
             Parcel::class
         );
     }
+
     public function testParcel()
     {
         $parcel = $this->getParcelMock();
@@ -27,11 +29,10 @@ class ParcelTest extends PHPUnitTestCase
             ->setWidth($parcelArray['width'])
             ->setHeight($parcelArray['height'])
             ->setLength($parcelArray['length']);
-        
+
         $this->assertEquals($parcelArray['weight'], $parcel->getWeight());
         $this->assertEquals($parcelArray['width'], $parcel->getWidth());
         $this->assertEquals($parcelArray['height'], $parcel->getHeight());
         $this->assertEquals($parcelArray['length'], $parcel->getLength());
     }
-
 }
