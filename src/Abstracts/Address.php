@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sylapi\Courier\Abstracts;
@@ -24,8 +25,8 @@ abstract class Address implements AddressContract
 
     public function setFromArray(array $address = []): AddressContract
     {
-        foreach( $address as $key => $value ) {
-            if(property_exists(__CLASS__, $key)) {
+        foreach ($address as $key => $value) {
+            if (property_exists(__CLASS__, $key)) {
                 $this->{$key} = $value;
             }
         }
@@ -66,13 +67,13 @@ abstract class Address implements AddressContract
 
     public function getFullName(): ?string
     {
-        return $this->fullName ?? (($this->firstName && $this->surname)? ($this->firstName . ' ' . $this->surname) : '');
+        return $this->fullName ?? (($this->firstName && $this->surname) ? ($this->firstName.' '.$this->surname) : '');
     }
 
     public function getAddress(): ?string
     {
-        return $this->address ?? 
-            trim($this->street . ' ' . $this->houseNumber . ' ' . $this->apartmentNumber);
+        return $this->address ??
+            trim($this->street.' '.$this->houseNumber.' '.$this->apartmentNumber);
     }
 
     public function setAddress(string $address): AddressContract
@@ -154,7 +155,7 @@ abstract class Address implements AddressContract
         return $this;
     }
 
-    public function getCountryCode(): ?string 
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
@@ -164,7 +165,7 @@ abstract class Address implements AddressContract
         $this->countryCode = $countryCode;
 
         return $this;
-    }    
+    }
 
     public function getContactPerson(): ?string
     {
