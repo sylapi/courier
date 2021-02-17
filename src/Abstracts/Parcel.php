@@ -13,48 +13,48 @@ abstract class Parcel implements ParcelContract
     private $height;
     private $length;
 
-    public function getWeight()
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
 
-    public function setWeight($weight): ParcelContract
+    public function setWeight(float $weight): ParcelContract
     {
         $this->weight = $weight;
 
         return $this;
     }
 
-    public function getWidth()
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function setWidth($width): ParcelContract
+    public function setWidth(int $width): ParcelContract
     {
         $this->width = $width;
 
         return $this;
     }
 
-    public function getHeight()
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    public function setHeight($height): ParcelContract
+    public function setHeight(int $height): ParcelContract
     {
         $this->height = $height;
 
         return $this;
     }
 
-    public function getLength()
+    public function getLength(): ?int
     {
         return $this->length;
     }
 
-    public function setLength($length): ParcelContract
+    public function setLength(int $length): ParcelContract
     {
         $this->length = $length;
 

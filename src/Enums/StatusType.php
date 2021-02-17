@@ -8,6 +8,7 @@ use Sylapi\Courier\Abstracts\Enum;
 
 class StatusType extends Enum
 {
+    const APP_UNAVAILABLE = 'app_unavailable';
     const APP_RESPONSE_ERROR = 'app_response_error';
     const NEW = 'new';
     const CANCELLED = 'cancelled';

@@ -15,7 +15,7 @@ abstract class Booking implements BookingContract
         return $this->shipmentId;
     }
 
-    public function setShipmentId(string $shipmentId): Booking
+    public function setShipmentId(string $shipmentId): BookingContract
     {
         $this->shipmentId = $shipmentId;
 

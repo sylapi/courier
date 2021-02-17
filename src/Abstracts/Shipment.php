@@ -33,7 +33,7 @@ abstract class Shipment implements ShipmentContract
 
     public function getExternalId(): string
     {
-        return $this->referenceId;
+        return $this->externalId;
     }
 
     public function setExternalId(string $externalId): ShipmentContract
