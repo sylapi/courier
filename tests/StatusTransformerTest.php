@@ -1,4 +1,5 @@
 <?php
+
 namespace Sylapi\Courier\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
@@ -21,7 +22,6 @@ class StatusTransformerTest extends PHPUnitTestCase
         $this->assertEquals($status, (string) $statusTransformer);
     }
 
-    
     // public function testStatusTransformerWithNameChange()
     // {
     //     $status = 'TEST1';
@@ -29,7 +29,7 @@ class StatusTransformerTest extends PHPUnitTestCase
 
     //     $statusTransformer = $this->getStatusTransformerMock([ $status ]);
     //     $statusTransform->setStatuses([ $status => $statusTransform ]);
-    
+
     //     $this->assertEquals($statusTransform, (string) $statusTransformer);
     // }
 }
