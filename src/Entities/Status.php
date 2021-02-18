@@ -10,14 +10,14 @@ use Sylapi\Courier\Contracts\Status as StatusContract;
 class Status extends Response implements StatusContract
 {
     private $statusName;
-    
+
     public function __construct(?string $statusName)
     {
-    	$this->statusName = $statusName;
+        $this->statusName = $statusName;
     }
 
     public function __toString(): string
     {
-    	return $this->statusName ?? '';
+        return $this->statusName ?? '';
     }
 }

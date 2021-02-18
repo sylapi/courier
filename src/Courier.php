@@ -12,13 +12,13 @@ use Sylapi\Courier\Contracts\CourierMakeReceiver;
 use Sylapi\Courier\Contracts\CourierMakeSender;
 use Sylapi\Courier\Contracts\CourierMakeShipment;
 use Sylapi\Courier\Contracts\CourierPostShipment;
+use Sylapi\Courier\Contracts\Label as LabelContract;
 use Sylapi\Courier\Contracts\Parcel;
 use Sylapi\Courier\Contracts\Receiver;
+use Sylapi\Courier\Contracts\Response as ResponseContract;
 use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Shipment;
 use Sylapi\Courier\Contracts\Status as StatusContract;
-use Sylapi\Courier\Contracts\Label as LabelContract;
-use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Courier implements Contracts\Courier
 {

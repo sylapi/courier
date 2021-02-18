@@ -3,8 +3,8 @@
 namespace Sylapi\Courier\Tests\Unit;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
-use Sylapi\Courier\Courier;
 use Sylapi\Courier\Contracts;
+use Sylapi\Courier\Courier;
 
 class CourierTest extends PHPUnitTestCase
 {

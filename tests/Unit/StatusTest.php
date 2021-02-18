@@ -2,8 +2,8 @@
 
 namespace Sylapi\Courier\Tests\Unit;
 
-use Sylapi\Courier\Entities\Status;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
+use Sylapi\Courier\Entities\Status;
 
 class StatusTest extends PHPUnitTestCase
 {

@@ -2,9 +2,9 @@
 
 namespace Sylapi\Courier\Tests\Unit;
 
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use Sylapi\Courier\CourierFactory;
 use Sylapi\Courier\Exceptions\InvalidArgumentException;
-use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 class CourierFactoryTest extends PHPUnitTestCase
 {
