@@ -1,6 +1,6 @@
 <?php
 
-namespace Sylapi\Courier\Tests;
+namespace Sylapi\Courier\Tests\Unit;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use Sylapi\Courier\Abstracts\Parcel;

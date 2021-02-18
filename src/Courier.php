@@ -16,6 +16,9 @@ use Sylapi\Courier\Contracts\Parcel;
 use Sylapi\Courier\Contracts\Receiver;
 use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Shipment;
+use Sylapi\Courier\Contracts\Status as StatusContract;
+use Sylapi\Courier\Contracts\Label as LabelContract;
+use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Courier implements Contracts\Courier
 {
@@ -51,22 +54,22 @@ class Courier implements Contracts\Courier
         $this->makeBooking = $makeBooking;
     }
 
-    public function createShipment(Shipment $shipment): array
+    public function createShipment(Shipment $shipment): ResponseContract
     {
         return $this->createShipment->createShipment($shipment);
     }
 
-    public function postShipment(Booking $booking): array
+    public function postShipment(Booking $booking): ResponseContract
     {
         return $this->postShipment->postShipment($booking);
     }
 
-    public function getLabel(string $shipmentId): ?string
+    public function getLabel(string $shipmentId): LabelContract
     {
         return $this->getLabels->getLabel($shipmentId);
     }
 
-    public function getStatus(string $shipmentId): string
+    public function getStatus(string $shipmentId): StatusContract
     {
         return $this->getStatuses->getStatus($shipmentId);
     }

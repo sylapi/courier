@@ -6,5 +6,5 @@ namespace Sylapi\Courier\Contracts;
 
 interface CourierGetLabels
 {
-    public function getLabel(string $shipmentId): ?string;
+    public function getLabel(string $shipmentId): Label;
 }
