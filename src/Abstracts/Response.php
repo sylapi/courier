@@ -12,12 +12,13 @@ abstract class Response extends \stdClass implements ResponseContract
 
     public function hasErrors(): bool
     {
-        return (is_array($this->errors) && count($this->errors) > 0); 
+        return is_array($this->errors) && count($this->errors) > 0;
     }
 
     public function addError(\Throwable $error): ResponseContract
     {
         $this->errors[] = $error;
+
         return $this;
     }
 
@@ -28,7 +29,7 @@ abstract class Response extends \stdClass implements ResponseContract
 
     public function getFirstError(): ?\Throwable
     {
-        if(!$this->hasErrors()) {
+        if (!$this->hasErrors()) {
             return null;
         }
 

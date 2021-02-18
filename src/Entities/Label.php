@@ -10,14 +10,14 @@ use Sylapi\Courier\Contracts\Label as LabelContract;
 class Label extends Response implements LabelContract
 {
     private $data;
-    
+
     public function __construct(?string $data)
     {
-    	$this->data = $data;
+        $this->data = $data;
     }
 
     public function __toString(): string
     {
-    	return $this->data ?? '';
+        return $this->data ?? '';
     }
 }

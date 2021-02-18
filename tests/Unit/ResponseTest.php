@@ -2,13 +2,12 @@
 
 namespace Sylapi\Courier\Tests\Unit;
 
+use Exception;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use Sylapi\Courier\Abstracts\Response;
-use Exception;
 
 class ResponseTest extends PHPUnitTestCase
 {
-
     private function getExceptionMock(array $arguments)
     {
         return $this->getMockForAbstractClass(
@@ -16,7 +15,6 @@ class ResponseTest extends PHPUnitTestCase
             $arguments
         );
     }
-
 
     private function getResponseMock()
     {
@@ -31,7 +29,7 @@ class ResponseTest extends PHPUnitTestCase
         $exception = $this->getExceptionMock(['']);
         $response->addError($exception);
         $this->assertTrue($response->hasErrors());
-        $this->assertCount(1,$response->getErrors());
+        $this->assertCount(1, $response->getErrors());
     }
 
     public function testNotHasErrors()
