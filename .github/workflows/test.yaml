@@ -20,7 +20,7 @@ jobs:
       - name: Run Composer
         run: composer install  
       - name: Run PHPStan
-        run: phpstan analyse src                
+        run: phpstan analyse src tests               
       - name: Run test suite
         run: vendor/bin/phpunit
       - name: Run test coverage
