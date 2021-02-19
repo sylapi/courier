@@ -22,3 +22,6 @@ jobs:
         run: vendor/bin/phpunit
       - name: Run test coverage
         run: vendor/bin/phpunit --verbose --coverage-text
+      - name: Run codecov
+        run: covr::codecov()
+        shell: Rscript {0}        
