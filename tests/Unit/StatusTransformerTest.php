@@ -27,9 +27,9 @@ class StatusTransformerTest extends PHPUnitTestCase
         $status = 'TEST1';
         $statusTransform = 'TEST2';
 
-        $statusTransformer = $this->getStatusTransformerMock([ $status ]);
+        $statusTransformer = $this->getStatusTransformerMock([$status]);
         $statusTransformer->statuses = [
-            $status => $statusTransform
+            $status => $statusTransform,
         ];
 
         $this->assertEquals($statusTransform, (string) $statusTransformer);
