@@ -22,6 +22,7 @@ jobs:
         run: vendor/bin/phpunit
       - name: Run test coverage
         run: vendor/bin/phpunit --verbose --coverage-text
-      - name: Run codecov
-        run: covr::codecov()
-        shell: Rscript {0}        
+      - name: Run test coverage.xml
+        run: vendor/bin/phpunit --coverage-clover coverage.xml         
+      - uses: codecov/codecov-action@v1
+        files: ./coverage.xml     
