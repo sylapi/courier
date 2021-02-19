@@ -25,4 +25,5 @@ jobs:
       - name: Run test coverage.xml
         run: vendor/bin/phpunit --coverage-clover coverage.xml         
       - uses: codecov/codecov-action@v1
-        files: ./coverage.xml     
+        with:
+          files: ./coverage.xml     
