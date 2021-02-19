@@ -22,14 +22,16 @@ class StatusTransformerTest extends PHPUnitTestCase
         $this->assertEquals($status, (string) $statusTransformer);
     }
 
-    // public function testStatusTransformerWithNameChange()
-    // {
-    //     $status = 'TEST1';
-    //     $statusTransform = 'TEST2';
+    public function testStatusTransformerWithNameChange()
+    {
+        $status = 'TEST1';
+        $statusTransform = 'TEST2';
 
-    //     $statusTransformer = $this->getStatusTransformerMock([ $status ]);
-    //     $statusTransform->setStatuses([ $status => $statusTransform ]);
+        $statusTransformer = $this->getStatusTransformerMock([ $status ]);
+        $statusTransformer->statuses = [
+            $status => $statusTransform
+        ];
 
-    //     $this->assertEquals($statusTransform, (string) $statusTransformer);
-    // }
+        $this->assertEquals($statusTransform, (string) $statusTransformer);
+    }
 }
