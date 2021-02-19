@@ -23,3 +23,5 @@ jobs:
         run: phpstan analyse src                
       - name: Run test suite
         run: vendor/bin/phpunit
+      - name: Run test coverage
+        run: vendor/bin/phpunit --verbose --coverage-text
