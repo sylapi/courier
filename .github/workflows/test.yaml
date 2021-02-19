@@ -17,7 +17,9 @@ jobs:
           ini-values: post_max_size=256M, log_errors=1
           coverage: xdebug
           tools: phpstan
+      - name: Run Composer
+        run: composer install  
+      - name: Run PHPStan
+        run: phpstan analyse src                
       - name: Run test suite
         run: vendor/bin/phpunit
-      - name: Run PHPStan
-        run: phpstan analyse src
