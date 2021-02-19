@@ -2,9 +2,6 @@ name: Test
 on: [push]
 jobs:
   build:
-    strategy:
-      matrix:
-        php-versions: [7.4']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,7 +9,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: '7.4'
           extensions: mbstring, intl
           ini-values: post_max_size=256M, log_errors=1
           coverage: xdebug
