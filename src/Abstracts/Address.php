@@ -208,6 +208,7 @@ abstract class Address implements AddressContract
         $arr = get_object_vars($this);
         $arr['fullName'] = $this->getFullName();
         $arr['address'] = $this->getAddress();
+
         return $arr;
     }
 
