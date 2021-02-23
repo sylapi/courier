@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\Parcel;
-use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Receiver;
-use Sylapi\Courier\Traits\Validatable;
+use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Shipment as ShipmentContract;
+use Sylapi\Courier\Traits\Validatable;
 
 abstract class Shipment implements ShipmentContract
 {
