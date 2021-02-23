@@ -11,6 +11,7 @@ trait Validatable
     public function setErrors(array $errors): self
     {
         $this->errors = $errors;
+
         return $this;
     }
 
