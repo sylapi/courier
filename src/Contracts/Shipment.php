@@ -14,15 +14,15 @@ interface Shipment extends Validatable
 
     public function setExternalId(string $externalId): self;
 
-    public function getSender(): Sender;
+    public function getSender(): ?Sender;
 
     public function setSender(Sender $sender): self;
 
-    public function getReceiver(): Receiver;
+    public function getReceiver(): ?Receiver;
 
     public function setReceiver(Receiver $receiver): self;
 
-    public function getParcel(): Parcel;
+    public function getParcel(): ?Parcel;
 
     public function setParcel(Parcel $parcel): self;
 

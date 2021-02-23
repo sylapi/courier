@@ -46,7 +46,7 @@ abstract class Shipment implements ShipmentContract
         return $this;
     }
 
-    public function getSender(): Sender
+    public function getSender(): ?Sender
     {
         return $this->sender;
     }
@@ -58,7 +58,7 @@ abstract class Shipment implements ShipmentContract
         return $this;
     }
 
-    public function getReceiver(): Receiver
+    public function getReceiver(): ?Receiver
     {
         return $this->receiver;
     }
@@ -70,7 +70,7 @@ abstract class Shipment implements ShipmentContract
         return $this;
     }
 
-    public function getParcel(): Parcel
+    public function getParcel(): ?Parcel
     {
         return $this->parcel;
     }
