@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Contracts;
 
-interface Parcel
+interface Parcel extends Validatable
 {
     public function getWeight(): ?float;
 
@@ -21,6 +21,4 @@ interface Parcel
     public function getLength(): ?int;
 
     public function setLength(int $length): self;
-
-    public function validate(): bool;
 }

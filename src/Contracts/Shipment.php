@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Contracts;
 
-interface Shipment
+interface Shipment extends Validatable
 {
     public function getReferenceId(): string;
 
@@ -33,6 +33,4 @@ interface Shipment
     public function getQuantity(): int;
 
     public function getWeight(): float;
-
-    public function validate(): bool;
 }

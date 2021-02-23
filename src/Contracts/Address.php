@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Contracts;
 
-interface Address
+interface Address extends Validatable
 {
     public function setFirstName(string $firstName): self;
 
@@ -63,6 +63,4 @@ interface Address
     public function getPhone(): ?string;
 
     public function toArray(): array;
-
-    public function validate(): bool;
 }

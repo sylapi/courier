@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\Parcel;
-use Sylapi\Courier\Contracts\Receiver;
 use Sylapi\Courier\Contracts\Sender;
+use Sylapi\Courier\Contracts\Receiver;
+use Sylapi\Courier\Traits\Validatable;
 use Sylapi\Courier\Contracts\Shipment as ShipmentContract;
 
 abstract class Shipment implements ShipmentContract
 {
+    use Validatable;
+
     private $externalId;
     private $referenceId;
     private $sender;
@@ -106,6 +109,4 @@ abstract class Shipment implements ShipmentContract
     {
         return (is_array($this->parcels)) ? count($this->parcels) : 0;
     }
-
-    abstract public function validate(): bool;
 }

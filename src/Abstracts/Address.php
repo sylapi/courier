@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\Address as AddressContract;
+use Sylapi\Courier\Traits\Validatable;
 
 abstract class Address implements AddressContract
 {
+    use Validatable;
+    
     private $firstName;
     private $surname;
     private $fullName;
@@ -208,9 +211,7 @@ abstract class Address implements AddressContract
         $arr = get_object_vars($this);
         $arr['fullName'] = $this->getFullName();
         $arr['address'] = $this->getAddress();
-
+        unset($arr['errors']);
         return $arr;
     }
-
-    abstract public function validate(): bool;
 }
