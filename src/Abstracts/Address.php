@@ -10,7 +10,7 @@ use Sylapi\Courier\Traits\Validatable;
 abstract class Address implements AddressContract
 {
     use Validatable;
-    
+
     private $firstName;
     private $surname;
     private $fullName;
@@ -212,6 +212,7 @@ abstract class Address implements AddressContract
         $arr['fullName'] = $this->getFullName();
         $arr['address'] = $this->getAddress();
         unset($arr['errors']);
+
         return $arr;
     }
 }

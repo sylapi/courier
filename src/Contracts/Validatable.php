@@ -7,5 +7,6 @@ namespace Sylapi\Courier\Contracts;
 interface Validatable
 {
     public function getErrors(): array;
+
     public function validate(): bool;
 }

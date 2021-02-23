@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Abstracts;
 
-use Sylapi\Courier\Traits\Validatable;
 use Sylapi\Courier\Contracts\Parcel as ParcelContract;
+use Sylapi\Courier\Traits\Validatable;
 
 abstract class Parcel implements ParcelContract
 {
     use Validatable;
-    
+
     private $weight;
     private $width;
     private $height;
