@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sylapi\Courier\Helpers;
@@ -9,8 +10,8 @@ class ResponseHelper
 {
     public static function pushErrorsToResponse(Response &$response, array $errors): Response
     {
-        foreach($errors as $error) {
-            if($error instanceof \Throwable) {
+        foreach ($errors as $error) {
+            if ($error instanceof \Throwable) {
                 $response->addError($error);
             }
         }
