@@ -94,9 +94,9 @@ class CreatePackage extends AbstractRequest
             if ($adapter->isSuccess()) {
 
                 $result = [
-                    'tracking_id',
-                    'custom_id',
-                    'price'
+                    'tracking_id' => 0,
+                    'custom_id' => 0,
+                    'price' => 0
                 ];
 
                 $response = $adapter->getResponse();
@@ -104,7 +104,7 @@ class CreatePackage extends AbstractRequest
                 if (!empty($response) && is_array($response)) {
                     foreach ($response as $key => $value) {
 
-                        if (in_array($key, $result)) {
+                        if (array_key_exists($key, $result)) {
 
                             $result[$key] = $value;
                         }
