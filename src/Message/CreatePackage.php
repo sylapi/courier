@@ -90,7 +90,7 @@ class CreatePackage extends AbstractRequest
                 $result = [
                     'tracking_id',
                     'custom_id',
-                    'price'
+                    'price',
                 ];
 
                 $response = $adapter->getResponse();
