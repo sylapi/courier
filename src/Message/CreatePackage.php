@@ -94,9 +94,9 @@ class CreatePackage extends AbstractRequest
             if ($adapter->isSuccess()) {
 
                 $result = [
-                    'tracking_id' => 0,
-                    'custom_id' => 0,
-                    'price' => 0
+                    'tracking_id',
+                    'custom_id',
+                    'price'
                 ];
 
                 $response = $adapter->getResponse();
