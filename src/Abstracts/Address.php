@@ -157,7 +157,7 @@ abstract class Address implements AddressContract
         $this->province = $province;
 
         return $this;
-    }    
+    }
 
     public function getCountry(): ?string
     {
