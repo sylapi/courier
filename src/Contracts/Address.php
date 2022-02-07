@@ -44,7 +44,7 @@ interface Address extends Validatable
 
     public function setProvince(string $province): self;
 
-    public function getProvince(): ?string;    
+    public function getProvince(): ?string;
 
     public function setCountry(string $country): self;
 
@@ -53,7 +53,6 @@ interface Address extends Validatable
     public function setCountryCode(string $countryCode): self;
 
     public function getCountryCode(): ?string;
-
 
     public function setContactPerson(string $contactPerson): self;
 
