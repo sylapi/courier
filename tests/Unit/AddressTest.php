@@ -18,7 +18,6 @@ class AddressTest extends PHPUnitTestCase
         'zipCode'         => '11000',
         'city'            => 'Miasto',
         'province'        => 'Województwo',
-        'zipCode'         => '11000',
         'country'         => 'Poland',
         'countryCode'     => 'pl',
         'contactPerson'   => 'Piotr Nowak',
