@@ -20,6 +20,7 @@ abstract class Address implements AddressContract
     private $apartmentNumber;
     private $city;
     private $zipCode;
+    private $province;
     private $country;
     private $countryCode;
     private $contactPerson;
@@ -145,6 +146,18 @@ abstract class Address implements AddressContract
 
         return $this;
     }
+
+    public function getProvince(): ?string
+    {
+        return $this->province;
+    }
+
+    public function setProvince(string $province): AddressContract
+    {
+        $this->province = $province;
+
+        return $this;
+    }    
 
     public function getCountry(): ?string
     {

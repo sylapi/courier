@@ -15,7 +15,9 @@ class AddressTest extends PHPUnitTestCase
         'street'          => 'Ulica',
         'houseNumber'     => '11a',
         'apartmentNumber' => '2',
+        'zipCode'         => '11000',
         'city'            => 'Miasto',
+        'province'        => 'Województwo',
         'zipCode'         => '11000',
         'country'         => 'Poland',
         'countryCode'     => 'pl',
@@ -41,7 +43,7 @@ class AddressTest extends PHPUnitTestCase
         $this->assertEquals($addressArray, $ata);
     }
 
-    public function testGenereteFullNameProperty()
+    public function testGenerateFullNameProperty()
     {
         $address = $this->getAddressMock();
         $addressArray = $this->addressArray;
@@ -56,7 +58,7 @@ class AddressTest extends PHPUnitTestCase
         $this->assertEquals($fullNameString, $address->getFullName());
     }
 
-    public function testGenereteAddressProperty()
+    public function testGenerateAddressProperty()
     {
         $address = $this->getAddressMock();
         $addressArray = $this->addressArray;
@@ -87,6 +89,7 @@ class AddressTest extends PHPUnitTestCase
             ->setApartmentNumber($addressArray['apartmentNumber'])
             ->setCity($addressArray['city'])
             ->setZipCode($addressArray['zipCode'])
+            ->setProvince($addressArray['province'])
             ->setCountry($addressArray['country'])
             ->setCountryCode($addressArray['countryCode'])
             ->setContactPerson($addressArray['contactPerson'])

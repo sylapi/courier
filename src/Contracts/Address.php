@@ -42,6 +42,10 @@ interface Address extends Validatable
 
     public function getZipCode(): ?string;
 
+    public function setProvince(string $province): self;
+
+    public function getProvince(): ?string;    
+
     public function setCountry(string $country): self;
 
     public function getCountry(): ?string;
@@ -49,6 +53,7 @@ interface Address extends Validatable
     public function setCountryCode(string $countryCode): self;
 
     public function getCountryCode(): ?string;
+
 
     public function setContactPerson(string $contactPerson): self;
 
