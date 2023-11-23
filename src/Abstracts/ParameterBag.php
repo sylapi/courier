@@ -1,8 +1,8 @@
 <?php
 
 namespace Sylapi\Courier\Abstracts;
-use Sylapi\Courier\Contracts\ParameterBag as ContractsParameterBag;
-class ParameterBag implements ContractsParameterBag {
+use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
+class ParameterBag implements ParameterBagContract {
     private $parameters = [];
 
     public function __construct(array $parameters = []) {

@@ -2,10 +2,10 @@
 
 namespace Sylapi\Courier\Abstracts;
 
-use Sylapi\Courier\Contracts\Credentials as ContractsCredentials;
-use Sylapi\Courier\Contracts\ParameterBag as ContractsParameterBag;
+use Sylapi\Courier\Contracts\Credentials as CredentialsContract;
+use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
 
-abstract class Credentials extends ParameterBag implements ContractsCredentials, ContractsParameterBag
+abstract class Credentials extends ParameterBag implements CredentialsContract, ParameterBagContract
 {
     public function setLogin(string $login): self
     {
