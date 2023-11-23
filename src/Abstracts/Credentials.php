@@ -31,4 +31,20 @@ abstract class Credentials extends ParameterBag implements CredentialsContract, 
         return $this->get('password');
     }
 
+    public function setSandbox(bool $sandbox): self
+    {
+        $this->set('sandbox', $sandbox);
+
+        return $this;
+    }
+
+    public function getSandbox(): bool
+    {
+        return $this->get('sandbox', true);
+    }    
+
+    public function isSandbox(): bool
+    {
+        return $this->getSandbox();
+    }
 }

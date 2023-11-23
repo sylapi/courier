@@ -15,4 +15,10 @@ interface Credentials
     public function setPassword(string $password): self;
 
     public function getPassword(): string;
+
+    public function setSandbox(bool $sandbox): self;
+
+    public function getSandbox(): bool;
+
+    public function isSandbox(): bool;
 }
