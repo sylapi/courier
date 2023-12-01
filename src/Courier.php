@@ -2,10 +2,11 @@
 
 namespace Sylapi\Courier;
 
-use Sylapi\Courier\Entities\Label;
 use Sylapi\Courier\Contracts\Parcel;
 use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Booking;
+use Sylapi\Courier\Contracts\Options;
+use Sylapi\Courier\Contracts\Service;
 use Sylapi\Courier\Contracts\Receiver;
 use Sylapi\Courier\Contracts\Shipment;
 use Sylapi\Courier\Contracts\LabelType;
@@ -14,6 +15,8 @@ use Sylapi\Courier\Contracts\CourierMakeParcel;
 use Sylapi\Courier\Contracts\CourierMakeSender;
 use Sylapi\Courier\Contracts\CourierGetStatuses;
 use Sylapi\Courier\Contracts\CourierMakeBooking;
+use Sylapi\Courier\Contracts\CourierMakeOptions;
+use Sylapi\Courier\Contracts\CourierMakeService;
 use Sylapi\Courier\Contracts\CourierMakeReceiver;
 use Sylapi\Courier\Contracts\CourierMakeShipment;
 use Sylapi\Courier\Contracts\CourierPostShipment;
@@ -34,6 +37,8 @@ class Courier implements Contracts\Courier
         private CourierMakeParcel $makeParcel,
         private CourierMakeReceiver $makeReceiver,
         private CourierMakeSender $makeSender,
+        private CourierMakeService $makeService,
+        private CourierMakeOptions $makeOptions,
         private CourierMakeBooking $makeBooking,
         private CourierMakeLabelType $makeLabelType
     ) {
@@ -78,6 +83,16 @@ class Courier implements Contracts\Courier
     {
         return $this->makeSender->makeSender();
     }
+
+    public function makeService(): Service
+    {
+        return $this->makeService->makeService();
+    }      
+
+    public function makeOptions(): Options
+    {
+        return $this->makeOptions->makeOptions();
+    }    
 
     public function makeBooking(): Booking
     {
