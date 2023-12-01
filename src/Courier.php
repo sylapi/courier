@@ -32,7 +32,6 @@ class Courier implements Contracts\Courier
         private CourierPostShipment $postShipment,
         private CourierGetLabels $getLabels,
         private CourierGetStatuses $getStatuses,
-        private CourierMakeCredentials $makeCredentials,
         private CourierMakeShipment $makeShipment,
         private CourierMakeParcel $makeParcel,
         private CourierMakeReceiver $makeReceiver,
@@ -60,11 +59,6 @@ class Courier implements Contracts\Courier
     public function getStatus(string $shipmentId): StatusContract
     {
         return $this->getStatuses->getStatus($shipmentId);
-    }
-
-    public function makeCredentials(): Credentials
-    {
-        return $this->makeCredentials->makeCredentials();
     }
 
     public function makeShipment(): Shipment
