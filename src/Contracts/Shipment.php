@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Contracts;
 
+use Sylapi\Courier\Contracts\Options;
+
 interface Shipment extends Validatable
 {
     public function getReferenceId(): string;
@@ -33,4 +35,12 @@ interface Shipment extends Validatable
     public function getQuantity(): int;
 
     public function getWeight(): float;
+
+    public function addService(Service $service): self;
+
+    public function getServices(): array;
+
+    public function setOptions(Options $options): self;
+
+    public function getOptions(): Options;
 }

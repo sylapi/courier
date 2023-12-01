@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\Parcel;
-use Sylapi\Courier\Contracts\Receiver;
 use Sylapi\Courier\Contracts\Sender;
-use Sylapi\Courier\Contracts\Shipment as ShipmentContract;
+use Sylapi\Courier\Contracts\Options;
+use Sylapi\Courier\Contracts\Service;
+use Sylapi\Courier\Contracts\Receiver;
 use Sylapi\Courier\Traits\Validatable;
+use Sylapi\Courier\Contracts\Shipment as ShipmentContract;
 
 abstract class Shipment implements ShipmentContract
 {
@@ -21,6 +23,8 @@ abstract class Shipment implements ShipmentContract
     private $parcel;
     private $parcels;
     private $content;
+    private $services = [];
+    private $options = [];
 
     public function getReferenceId(): string
     {
@@ -108,5 +112,29 @@ abstract class Shipment implements ShipmentContract
     public function getQuantity(): int
     {
         return (is_array($this->parcels)) ? count($this->parcels) : 0;
+    }
+
+    public function addService(Service $service): ShipmentContract
+    {
+        $this->services[] = $service;
+
+        return $this;
+    }
+
+    public function getServices(): array
+    {
+        return $this->services;
+    }
+
+    public function setOptions(Options $options): ShipmentContract
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    public function getOptions(): Options
+    {
+        return $this->options;
     }
 }
