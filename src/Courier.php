@@ -2,56 +2,44 @@
 
 namespace Sylapi\Courier;
 
+use Sylapi\Courier\Entities\Label;
+use Sylapi\Courier\Contracts\Parcel;
+use Sylapi\Courier\Contracts\Sender;
 use Sylapi\Courier\Contracts\Booking;
-use Sylapi\Courier\Contracts\CourierCreateShipment;
+use Sylapi\Courier\Contracts\Receiver;
+use Sylapi\Courier\Contracts\Shipment;
+use Sylapi\Courier\Contracts\LabelType;
+use Sylapi\Courier\Contracts\Credentials;
 use Sylapi\Courier\Contracts\CourierGetLabels;
+use Sylapi\Courier\Contracts\CourierMakeParcel;
+use Sylapi\Courier\Contracts\CourierMakeSender;
 use Sylapi\Courier\Contracts\CourierGetStatuses;
 use Sylapi\Courier\Contracts\CourierMakeBooking;
-use Sylapi\Courier\Contracts\CourierMakeParcel;
 use Sylapi\Courier\Contracts\CourierMakeReceiver;
-use Sylapi\Courier\Contracts\CourierMakeSender;
 use Sylapi\Courier\Contracts\CourierMakeShipment;
 use Sylapi\Courier\Contracts\CourierPostShipment;
+use Sylapi\Courier\Contracts\CourierMakeLabelType;
+use Sylapi\Courier\Contracts\CourierCreateShipment;
+use Sylapi\Courier\Contracts\CourierMakeCredentials;
 use Sylapi\Courier\Contracts\Label as LabelContract;
-use Sylapi\Courier\Contracts\Parcel;
-use Sylapi\Courier\Contracts\Receiver;
-use Sylapi\Courier\Contracts\Response as ResponseContract;
-use Sylapi\Courier\Contracts\Sender;
-use Sylapi\Courier\Contracts\Shipment;
 use Sylapi\Courier\Contracts\Status as StatusContract;
+use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Courier implements Contracts\Courier
 {
-    private $createShipment;
-    private $postShipment;
-    private $getLabels;
-    private $getStatuses;
-    private $makeShipment;
-    private $makeParcel;
-    private $makeReceiver;
-    private $makeSender;
-    private $makeBooking;
-
     public function __construct(
-        CourierCreateShipment $createShipment,
-        CourierPostShipment $postShipment,
-        CourierGetLabels $getLabels,
-        CourierGetStatuses $getStatuses,
-        CourierMakeShipment $makeShipment,
-        CourierMakeParcel $makeParcel,
-        CourierMakeReceiver $makeReceiver,
-        CourierMakeSender $makeSender,
-        CourierMakeBooking $makeBooking
+        private CourierCreateShipment $createShipment,
+        private CourierPostShipment $postShipment,
+        private CourierGetLabels $getLabels,
+        private CourierGetStatuses $getStatuses,
+        private CourierMakeCredentials $makeCredentials,
+        private CourierMakeShipment $makeShipment,
+        private CourierMakeParcel $makeParcel,
+        private CourierMakeReceiver $makeReceiver,
+        private CourierMakeSender $makeSender,
+        private CourierMakeBooking $makeBooking,
+        private CourierMakeLabelType $makeLabelType
     ) {
-        $this->createShipment = $createShipment;
-        $this->postShipment = $postShipment;
-        $this->getLabels = $getLabels;
-        $this->getStatuses = $getStatuses;
-        $this->makeShipment = $makeShipment;
-        $this->makeParcel = $makeParcel;
-        $this->makeReceiver = $makeReceiver;
-        $this->makeSender = $makeSender;
-        $this->makeBooking = $makeBooking;
     }
 
     public function createShipment(Shipment $shipment): ResponseContract
@@ -72,6 +60,11 @@ class Courier implements Contracts\Courier
     public function getStatus(string $shipmentId): StatusContract
     {
         return $this->getStatuses->getStatus($shipmentId);
+    }
+
+    public function makeCredentials(): Credentials
+    {
+        return $this->makeCredentials->makeCredentials();
     }
 
     public function makeShipment(): Shipment
@@ -97,5 +90,10 @@ class Courier implements Contracts\Courier
     public function makeBooking(): Booking
     {
         return $this->makeBooking->makeBooking();
+    }
+
+    public function makeLabelType(): LabelType
+    {
+        return $this->makeLabelType->makeLabelType();
     }
 }

@@ -4,11 +4,10 @@ namespace Sylapi\Courier;
 
 use Sylapi\Courier\Exceptions\InvalidArgumentException;
 use Sylapi\Courier\Contracts\Credentials;
-use Sylapi\Courier\Contracts\ParameterBag;
 
 class CourierFactory
 {
-    public static function create(string $courierName, Credentials $credentials, ParameterBag $options)
+    public static function create(string $courierName, Credentials $credentials)
     {
         self::validateCourierName($courierName);
 
@@ -19,7 +18,7 @@ class CourierFactory
             new $classNameSessionFactory()
         );
 
-        return $gateway->create($credentials, $options);
+        return $gateway->create($credentials);
     }
 
     private static function validateCourierName(string $courierName)
