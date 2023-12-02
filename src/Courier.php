@@ -84,9 +84,9 @@ class Courier implements Contracts\Courier
         return $this->makeSender->makeSender();
     }
 
-    public function makeService(): Service
+    public function makeService(?string $serviceType = null): Service
     {
-        return $this->makeService->makeService();
+        return $this->makeService->makeService($serviceType);
     }      
 
     public function makeOptions(): Options
