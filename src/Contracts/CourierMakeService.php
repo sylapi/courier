@@ -8,5 +8,5 @@ use Sylapi\Courier\Contracts\Service;
 
 interface CourierMakeService
 {
-    public function makeService(): Service;
+    public function makeService(string $serviceType = null): Service;
 }
