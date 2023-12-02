@@ -2,11 +2,12 @@
 
 namespace Sylapi\Courier;
 
+use Sylapi\Courier\Contracts\Service as ServiceContract;
 use Sylapi\Courier\Exceptions\ServiceNotAvailableException;
 
 class ServiceFactory
 {
-    public static function create(string $courierName, string $serviceType)
+    public static function create(string $courierName, string $serviceType): ServiceContract
     {
         self::validate($courierName, $serviceType);
 
@@ -15,7 +16,7 @@ class ServiceFactory
         return new $classNameService($courierName, $serviceType);
     }
 
-    private static function validate(string $courierName, string $serviceType)
+    private static function validate(string $courierName, string $serviceType): void
     {
         $classNameService = self::getClassName($courierName, $serviceType);
         if (!class_exists($classNameService)
@@ -25,7 +26,8 @@ class ServiceFactory
         }
     }
 
-    private static function getClassName(string $courierName, string $serviceType) {
+    private static function getClassName(string $courierName, string $serviceType): string
+    {
         return 'Sylapi\Courier\\'.$courierName.'\Services\\'.$serviceType;
     }
 }
