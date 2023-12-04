@@ -9,4 +9,3 @@ enum ServiceType: string {
     case COD = 'COD';
     case INSURANCE = 'INSURANCE';
 }
-
