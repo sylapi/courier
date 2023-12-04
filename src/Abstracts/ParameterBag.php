@@ -9,7 +9,7 @@ abstract class ParameterBag implements OptionsContract
 {
     private $options;
 
-    public function __construct(array $options = [])
+    public function from(array $options = [])
     {
         $this->options = $options;
     }
