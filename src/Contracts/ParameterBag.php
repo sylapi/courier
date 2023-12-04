@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Sylapi\Courier\Contracts;
 interface ParameterBag
 {
-    public function __construct(array $parameters = []);
+    public function from(array $parameters = []);
 
     public function has(string $key): bool;
 

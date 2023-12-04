@@ -2,27 +2,27 @@
 
 namespace Sylapi\Courier\Abstracts;
 
-use Sylapi\Courier\Contracts\Options as OptionsContract;
+use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
 use Sylapi\Courier\Traits\Validatable;
 
-abstract class ParameterBag implements OptionsContract
+abstract class ParameterBag implements ParameterBagContract
 {
-    private $options;
+    private $parameters;
 
-    public function from(array $options = [])
+    public function from(array $parameters = [])
     {
-        $this->options = $options;
+        $this->parameters = $parameters;
     }
 
     public function has(string $key): bool
     {
-        return array_key_exists($key, $this->options);
+        return array_key_exists($key, $this->parameters);
     }
 
     public function get(string $key)
     {
         if ($this->has($key)) {
-            return $this->options[$key];
+            return $this->parameters[$key];
         }
 
         return null;
@@ -30,11 +30,11 @@ abstract class ParameterBag implements OptionsContract
 
     public function set(string $key, $value): void
     {
-        $this->options[$key] = $value;
+        $this->parameters[$key] = $value;
     }
 
     public function all(): array
     {
-        return $this->options;
+        return $this->parameters;
     }    
 }
