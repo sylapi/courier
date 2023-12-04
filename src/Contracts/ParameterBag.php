@@ -9,7 +9,7 @@ interface ParameterBag
 
     public function has(string $key): bool;
 
-    public function get(string $key);
+    public function get(string $key, mixed $default = null): mixed;
 
     public function set(string $key, mixed $value): void;
 

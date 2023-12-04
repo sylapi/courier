@@ -18,13 +18,13 @@ abstract class ParameterBag implements ParameterBagContract
         return array_key_exists($key, $this->parameters);
     }
 
-    public function get(string $key)
+    public function get(string $key, mixed $default = null): mixed
     {
         if ($this->has($key)) {
             return $this->parameters[$key];
         }
 
-        return null;
+        return $default;
     }
 
     public function set(string $key, $value): void
