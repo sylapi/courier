@@ -3,7 +3,6 @@
 namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
-use Sylapi\Courier\Traits\Validatable;
 
 abstract class ParameterBag implements ParameterBagContract
 {
