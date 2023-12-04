@@ -8,6 +8,4 @@ use Sylapi\Courier\Traits\Validatable;
 abstract class Options extends ParameterBag implements OptionsContract
 {
     use Validatable;
-
- 
 }
