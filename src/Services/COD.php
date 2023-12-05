@@ -22,7 +22,7 @@ class COD extends Service implements CODContract
         return $this;
     }
 
-    private function validate(): bool
+    public function validate(): bool
     {
         return true;
     }
