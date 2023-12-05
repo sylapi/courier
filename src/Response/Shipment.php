@@ -11,7 +11,7 @@ class Shipment extends ResponseAbstract implements ResponseContract
 {
     private $shipmentId;
 
-    public function setShipmentId(string $ShipmentId): self
+    public function setShipmentId(string $ShipmentId): ResponseContract
     {
         $this->shipmentId = $ShipmentId;
 
