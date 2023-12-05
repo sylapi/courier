@@ -1,6 +1,6 @@
 <?php
 
-namespace Sylapi\Courier\Abstract\Services;
+namespace Sylapi\Courier\Abstracts\Services;
 
 use Sylapi\Courier\Abstracts\Service;
 use Sylapi\Courier\Traits\Validatable;
