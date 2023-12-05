@@ -6,33 +6,32 @@ namespace Sylapi\Courier\Abstracts;
 
 use Sylapi\Courier\Contracts\Response as ResponseContract;
 
-abstract class Response extends \stdClass implements ResponseContract
+abstract class Response implements ResponseContract
 {
-    private $errors = [];
+    private mixed $request;
+    private mixed $response;
 
-    public function hasErrors(): bool
+    public function setRequest( mixed $request): ResponseContract
     {
-        return is_array($this->errors) && count($this->errors) > 0;
-    }
-
-    public function addError(\Throwable $error): ResponseContract
-    {
-        $this->errors[] = $error;
+        $this->request = $request;
 
         return $this;
     }
 
-    public function getErrors()
+    public function getRequest()
     {
-        return $this->errors;
+        return $this->request;
     }
 
-    public function getFirstError(): ?\Throwable
+    public function setResponse(mixed $response): ResponseContract
     {
-        if (!$this->hasErrors()) {
-            return null;
-        }
+        $this->response = $response;
 
-        return current($this->errors);
+        return $this;
+    }
+
+    public function getResponse()
+    {
+        return $this->response;
     }
 }

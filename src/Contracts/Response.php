@@ -6,9 +6,11 @@ namespace Sylapi\Courier\Contracts;
 
 interface Response
 {
-    public function hasErrors(): bool;
+    public function setRequest(mixed $request): Response;
 
-    public function addError(\Throwable $error): self;
+    public function getRequest();
 
-    public function getFirstError(): ?\Throwable;
+    public function setResponse(mixed $response): Response;
+
+    public function getResponse();
 }
