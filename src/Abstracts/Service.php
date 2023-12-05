@@ -17,7 +17,7 @@ abstract class Service extends ParameterBag implements ServiceContract
         return $this;
     }
 
-    public function getRequest(): array
+    public function getRequest(): ?array
     {
         return $this->request;
     }
