@@ -16,7 +16,7 @@ class COD extends Service implements CODContract
         return $this->get('amount', null);
     }
 
-    public function setAmount(float $amount): self
+    public function setAmount(float $amount): CODContract
     {
         $this->set('amount', $amount);
         return $this;

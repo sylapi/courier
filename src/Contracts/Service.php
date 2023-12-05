@@ -7,4 +7,7 @@ namespace Sylapi\Courier\Contracts;
 interface Service extends ParameterBag
 {
 
+
+    
+
 }
