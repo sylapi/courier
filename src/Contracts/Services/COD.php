@@ -1,27 +1,14 @@
 <?php
 
-namespace Sylapi\Courier\Contracts\Services;
+declare(strict_types=1);
 
-use Sylapi\Courier\Abstracts\Service;
-use Sylapi\Courier\Traits\Validatable;
+namespace Sylapi\Courier\Contracts;
 
-class COD extends Service
+use Sylapi\Courier\Contracts\Validatable;
+
+interface COD extends Service, Validatable
 {
-    use Validatable;
-
-    public function getAmount(): ?float
-    {
-        return $this->get('amount', null);
-    }
-
-    public function setAmount(float $amount): self
-    {
-        $this->set('amount', $amount);
-        return $this;
-    }
-
-    private function validate(): bool
-    {
-        return true;
-    }
+    public function getAmount(): ?float;
+    
+    public function setAmount(float $amount): self;
 }
