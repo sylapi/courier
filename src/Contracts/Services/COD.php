@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Sylapi\Courier\Contracts;
+namespace Sylapi\Courier\Contracts\Services;
 
 use Sylapi\Courier\Contracts\Validatable;
+use Sylapi\Courier\Contracts\Service;
 
 interface COD extends Service, Validatable
 {
