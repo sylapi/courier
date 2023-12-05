@@ -4,7 +4,7 @@ namespace Sylapi\Courier\Services;
 
 use Sylapi\Courier\Abstracts\Service;
 use Sylapi\Courier\Traits\Validatable;
-use Sylapi\Courier\Contracts\COD as CODContract;
+use Sylapi\Courier\Contracts\Services\COD as CODContract;
 
 
 class COD extends Service implements CODContract
