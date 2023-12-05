@@ -21,4 +21,6 @@ abstract class Service extends ParameterBag implements ServiceContract
     {
         return $this->request;
     }
+
+    abstract public function handle(): array;
 }

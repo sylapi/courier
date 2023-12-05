@@ -1,13 +1,12 @@
 <?php
 
-namespace Sylapi\Courier\Services;
+namespace Sylapi\Courier\Abstract\Services;
 
 use Sylapi\Courier\Abstracts\Service;
 use Sylapi\Courier\Traits\Validatable;
 use Sylapi\Courier\Contracts\Services\COD as CODContract;
 
-
-class COD extends Service implements CODContract
+abstract class COD extends Service implements CODContract
 {
     use Validatable;
 
@@ -20,10 +19,5 @@ class COD extends Service implements CODContract
     {
         $this->set('amount', $amount);
         return $this;
-    }
-
-    public function validate(): bool
-    {
-        return true;
     }
 }
