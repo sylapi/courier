@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sylapi\Courier\Response;
+namespace Sylapi\Courier\Responses;
 
 use Sylapi\Courier\Abstracts\Response as ResponseAbstract;
 use Sylapi\Courier\Contracts\Response as ResponseContract;
 
-class Parcel extends ResponseAbstract implements ResponseContract
+class Shipment extends ResponseAbstract implements ResponseContract
 {
     private $shipmentId;
 
