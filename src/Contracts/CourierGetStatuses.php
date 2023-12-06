@@ -6,5 +6,5 @@ namespace Sylapi\Courier\Contracts;
 
 interface CourierGetStatuses
 {
-    public function getStatus(string $shipmentId): Status;
+    public function getStatus(string $shipmentId): Response;
 }
