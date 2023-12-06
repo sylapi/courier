@@ -12,6 +12,8 @@ class CourierFactoryTest extends PHPUnitTestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $courierName = \sha1((string) time());
-        CourierFactory::create($courierName, []);
+        $credentials = new class() extends \Sylapi\Courier\Abstracts\Credentials {
+        };
+        CourierFactory::create($courierName,  $credentials);
     }
 }

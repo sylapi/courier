@@ -18,7 +18,10 @@ class CourierTest extends PHPUnitTestCase
         $makeParcel = $this->createMock(Contracts\CourierMakeParcel::class);
         $makeReceiver = $this->createMock(Contracts\CourierMakeReceiver::class);
         $makeSender = $this->createMock(Contracts\CourierMakeSender::class);
+        $makeService = $this->createMock(Contracts\CourierMakeService::class);
+        $makeOptions = $this->createMock(Contracts\CourierMakeOptions::class);
         $makeBooking = $this->createMock(Contracts\CourierMakeBooking::class);
+        $makeLabelType = $this->createMock(Contracts\CourierMakeLabelType::class);
 
         $courier = new Courier(
             $createShipment,
@@ -29,7 +32,10 @@ class CourierTest extends PHPUnitTestCase
             $makeParcel,
             $makeReceiver,
             $makeSender,
-            $makeBooking
+            $makeService,
+            $makeOptions,
+            $makeBooking,
+            $makeLabelType,
         );
 
         $shipmentMock = $this->createMock(Contracts\Shipment::class);
@@ -37,12 +43,15 @@ class CourierTest extends PHPUnitTestCase
 
         $this->assertInstanceOf(Contracts\Response::class, $courier->createShipment($shipmentMock));
         $this->assertInstanceOf(Contracts\Response::class, $courier->postShipment($bookingMock));
-        $this->assertInstanceOf(Contracts\Label::class, $courier->getLabel('111'));
-        $this->assertInstanceOf(Contracts\Status::class, $courier->getStatus('111'));
+        $this->assertInstanceOf(Contracts\Response::class, $courier->getLabel('111'));
+        $this->assertInstanceOf(Contracts\Response::class, $courier->getStatus('111'));
         $this->assertInstanceOf(Contracts\Shipment::class, $courier->makeShipment());
         $this->assertInstanceOf(Contracts\Parcel::class, $courier->makeParcel());
         $this->assertInstanceOf(Contracts\Receiver::class, $courier->makeReceiver());
         $this->assertInstanceOf(Contracts\Sender::class, $courier->makeSender());
+        $this->assertInstanceOf(Contracts\Service::class, $courier->makeService());
+        $this->assertInstanceOf(Contracts\Options::class, $courier->makeOptions());
         $this->assertInstanceOf(Contracts\Booking::class, $courier->makeBooking());
+        $this->assertInstanceOf(Contracts\LabelType::class, $courier->makeLabelType());
     }
 }
