@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Sylapi\Courier\Entities;
 
-use Sylapi\Courier\Abstracts\Response;
-use Sylapi\Courier\Contracts\Status as StatusContract;
+use Sylapi\Courier\Abstracts\Response as ResponseAbstract;
+use Sylapi\Courier\Contracts\Response as ResponseContract;
 
-class Status extends Response implements StatusContract
+class Status extends ResponseAbstract implements ResponseContract
 {
     private $statusName;
 
