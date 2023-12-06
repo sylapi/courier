@@ -54,9 +54,9 @@ class Courier implements Contracts\Courier
         return $this->postShipment->postShipment($booking);
     }
 
-    public function getLabel(string $shipmentId): ResponseContract
+    public function getLabel(string $shipmentId, LabelType $labelType): ResponseContract
     {
-        return $this->getLabels->getLabel($shipmentId);
+        return $this->getLabels->getLabel($shipmentId, $labelType);
     }
 
     public function getStatus(string $shipmentId): ResponseContract

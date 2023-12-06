@@ -40,10 +40,11 @@ class CourierTest extends PHPUnitTestCase
 
         $shipmentMock = $this->createMock(Contracts\Shipment::class);
         $bookingMock = $this->createMock(Contracts\Booking::class);
+        $labelTypeMock = $this->createMock(Contracts\LabelType::class);
 
         $this->assertInstanceOf(Contracts\Response::class, $courier->createShipment($shipmentMock));
         $this->assertInstanceOf(Contracts\Response::class, $courier->postShipment($bookingMock));
-        $this->assertInstanceOf(Contracts\Response::class, $courier->getLabel('111'));
+        $this->assertInstanceOf(Contracts\Response::class, $courier->getLabel('111', $labelTypeMock));
         $this->assertInstanceOf(Contracts\Response::class, $courier->getStatus('111'));
         $this->assertInstanceOf(Contracts\Shipment::class, $courier->makeShipment());
         $this->assertInstanceOf(Contracts\Parcel::class, $courier->makeParcel());
