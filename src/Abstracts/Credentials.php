@@ -9,6 +9,7 @@ abstract class Credentials implements CredentialsContract
     private string $login;
     private string $password;
     private bool $sandbox;
+    private string $apiUrl;
 
     public function setLogin(string $login): self
     {
@@ -49,5 +50,17 @@ abstract class Credentials implements CredentialsContract
     public function isSandbox(): bool
     {
         return $this->getSandbox();
+    }
+
+    public function setApiUrl(string $apiUrl): self
+    {
+        $this->apiUrl = $apiUrl;
+
+        return $this;
+    }
+
+    public function getApiUrl(): string
+    {
+        return $this->apiUrl;
     }
 }
