@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 namespace Sylapi\Courier\Contracts;
+
 interface ParameterBag
 {
-    public function from(array $parameters = []);
+    public static function from(array $parameters = []): self;
 
     public function has(string $key): bool;
 

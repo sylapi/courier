@@ -8,9 +8,11 @@ abstract class ParameterBag implements ParameterBagContract
 {
     private $parameters;
 
-    public function from(array $parameters = [])
+    public static function from(array $parameters = []): self
     {
-        $this->parameters = $parameters;
+        $self = new self();
+        $self->parameters = $parameters;
+        return $self;
     }
 
     public function has(string $key): bool
