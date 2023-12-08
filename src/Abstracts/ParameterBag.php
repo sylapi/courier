@@ -10,7 +10,7 @@ abstract class ParameterBag implements ParameterBagContract
 
     public static function from(array $parameters = []): self
     {
-        $self = new self();
+        $self = new static();
         $self->parameters = $parameters;
         return $self;
     }
