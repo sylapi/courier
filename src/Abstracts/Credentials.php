@@ -7,45 +7,40 @@ use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
 use Sylapi\Courier\Abstracts\ParameterBag;
 abstract class Credentials extends ParameterBag implements CredentialsContract, ParameterBagContract
 {
-    private string $login;
-    private string $password;
-    private bool $sandbox;
-    private string $apiUrl;
-
     public function setLogin(string $login): self
     {
-        $this->login = $login;
+        $this->set('login', $login);
 
         return $this;
     }
 
     public function getLogin(): string
     {
-        return $this->login;
+        return $this->get('login');
     }
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
+        $this->set('password',$password);
 
         return $this;
     }
 
     public function getPassword(): string
     {
-        return $this->password;
+        return $this->get('password');
     }
 
     public function setSandbox(bool $sandbox): self
     {
-        $this->sandbox = $sandbox;
+        $this->set('sandbox',$sandbox);
 
         return $this;
     }
 
     public function getSandbox(): bool
     {
-        return $this->sandbox;
+        return $this->get('sandbox', false);
     }    
 
     public function isSandbox(): bool
@@ -55,13 +50,13 @@ abstract class Credentials extends ParameterBag implements CredentialsContract, 
 
     public function setApiUrl(string $apiUrl): self
     {
-        $this->apiUrl = $apiUrl;
+        $this->set('apiUrl', $apiUrl);
 
         return $this;
     }
 
     public function getApiUrl(): string
     {
-        return $this->apiUrl;
+        return $this->get('apiUrl');
     }
 }
