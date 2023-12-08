@@ -6,7 +6,7 @@ namespace Sylapi\Courier\Contracts;
 
 interface ParameterBag
 {
-    public static function from(array $parameters = []);
+    public static function from(array $parameters = []): self;
 
     public function has(string $key): bool;
 
