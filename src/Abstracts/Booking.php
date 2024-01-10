@@ -11,7 +11,7 @@ abstract class Booking implements BookingContract
 {
     use Validatable;
 
-    private $shipmentId;
+    private ?string $shipmentId;
 
     public function getShipmentId()
     {

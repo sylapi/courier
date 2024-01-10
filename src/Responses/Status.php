@@ -9,11 +9,35 @@ use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Status extends ResponseAbstract implements ResponseContract
 {
-    private $statusName;
+    public function __construct(
+        private ?string $statusName, 
+        private ?string $originalStatusName = null)
+    {
 
-    public function __construct(?string $statusName)
+    }
+
+    public function getStatusName(): ?string
+    {
+        return $this->statusName;
+    }
+
+    public function setStatusName(?string $statusName): self
     {
         $this->statusName = $statusName;
+
+        return $this;
+    }
+
+    public function getOriginalStatusName(): ?string
+    {
+        return $this->originalStatusName;
+    }
+
+    public function setOriginalStatusName(?string $originalStatusName): self
+    {
+        $this->originalStatusName = $originalStatusName;
+
+        return $this;
     }
 
     public function __toString(): string
