@@ -22,8 +22,6 @@ use Sylapi\Courier\Contracts\CourierMakeShipment;
 use Sylapi\Courier\Contracts\CourierPostShipment;
 use Sylapi\Courier\Contracts\CourierMakeLabelType;
 use Sylapi\Courier\Contracts\CourierCreateShipment;
-use Sylapi\Courier\Contracts\Label as LabelContract;
-use Sylapi\Courier\Contracts\Status as StatusContract;
 use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Courier implements Contracts\Courier
