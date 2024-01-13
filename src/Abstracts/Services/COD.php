@@ -20,4 +20,16 @@ abstract class COD extends Service implements CODContract
         $this->set('amount', $amount);
         return $this;
     }
+
+
+    public function getCurrency(): ?string
+    {
+        return $this->get('currency', null);
+    }
+
+    public function setCurrency(string $currency): CODContract
+    {
+        $this->set('currency', $currency);
+        return $this;
+    }
 }
