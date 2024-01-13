@@ -7,5 +7,6 @@ namespace Sylapi\Courier\Enums;
 
 enum ServiceType: string {
     case COD = 'COD';
-    case INSURANCE = 'INSURANCE';
+    case INSURANCE = 'Insurance';
+    case PICKUP_POINT = 'PickupPoint';
 }
