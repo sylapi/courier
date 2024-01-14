@@ -13,9 +13,9 @@ class Parcel extends ResponseAbstract implements ResponseContract
     private ?string $trackingId;
     private ?string $trackingUrl;
 
-    public function setShipmentId(string $ShipmentId): Parcel
+    public function setShipmentId(string $shipmentId): Parcel
     {
-        $this->shipmentId = $ShipmentId;
+        $this->shipmentId = $shipmentId;
 
         return $this;
     }
@@ -26,9 +26,9 @@ class Parcel extends ResponseAbstract implements ResponseContract
     }
 
 
-    public function setTrackingId(string $TrackingId): Parcel
+    public function setTrackingId(string $trackingId): Parcel
     {
-        $this->trackingId = $TrackingId;
+        $this->trackingId = $trackingId;
 
         return $this;
     }
@@ -38,9 +38,9 @@ class Parcel extends ResponseAbstract implements ResponseContract
         return $this->trackingId;
     }
 
-    public function setTrackingUrl(string $TrackingUrl): Parcel
+    public function setTrackingUrl(string $trackingUrl): Parcel
     {
-        $this->trackingUrl = $TrackingUrl;
+        $this->trackingUrl = $trackingUrl;
 
         return $this;
     }
