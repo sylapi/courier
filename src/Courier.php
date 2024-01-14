@@ -22,7 +22,10 @@ use Sylapi\Courier\Contracts\CourierMakeShipment;
 use Sylapi\Courier\Contracts\CourierPostShipment;
 use Sylapi\Courier\Contracts\CourierMakeLabelType;
 use Sylapi\Courier\Contracts\CourierCreateShipment;
-use Sylapi\Courier\Contracts\Response as ResponseContract;
+use Sylapi\Courier\Responses\Label as ResponseLabel;
+use Sylapi\Courier\Responses\Parcel as ResponseParcel;
+use Sylapi\Courier\Responses\Shipment as ResponseShipment;
+use Sylapi\Courier\Responses\Status as ResponseStatus;
 
 class Courier implements Contracts\Courier
 {
@@ -42,22 +45,22 @@ class Courier implements Contracts\Courier
     ) {
     }
 
-    public function createShipment(Shipment $shipment): ResponseContract
+    public function createShipment(Shipment $shipment): ResponseShipment
     {
         return $this->createShipment->createShipment($shipment);
     }
 
-    public function postShipment(Booking $booking): ResponseContract
+    public function postShipment(Booking $booking): ResponseParcel
     {
         return $this->postShipment->postShipment($booking);
     }
 
-    public function getLabel(string $shipmentId, LabelType $labelType): ResponseContract
+    public function getLabel(string $shipmentId, LabelType $labelType): ResponseLabel
     {
         return $this->getLabels->getLabel($shipmentId, $labelType);
     }
 
-    public function getStatus(string $shipmentId): ResponseContract
+    public function getStatus(string $shipmentId): ResponseStatus
     {
         return $this->getStatuses->getStatus($shipmentId);
     }
