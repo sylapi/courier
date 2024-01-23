@@ -6,7 +6,7 @@ use Sylapi\Courier\Contracts\ParameterBag as ParameterBagContract;
 
 abstract class ParameterBag implements ParameterBagContract
 {
-    private $parameters;
+    private $parameters = [];
 
     public static function from(array $parameters = []): self
     {
