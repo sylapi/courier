@@ -8,11 +8,11 @@ use Sylapi\Courier\Contracts\Options;
 
 interface Shipment extends Validatable
 {
-    public function getReferenceId(): string;
+    public function getReferenceId(): ?string;
 
     public function setReferenceId(string $referenceId): self;
 
-    public function getExternalId(): string;
+    public function getExternalId(): ?string;
 
     public function setExternalId(string $externalId): self;
 
@@ -28,7 +28,7 @@ interface Shipment extends Validatable
 
     public function setParcel(Parcel $parcel): self;
 
-    public function getContent(): string;
+    public function getContent(): ?string;
 
     public function setContent(string $content): self;
 

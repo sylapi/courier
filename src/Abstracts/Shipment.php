@@ -26,7 +26,7 @@ abstract class Shipment implements ShipmentContract
     private $services = [];
     private $options = [];
 
-    public function getReferenceId(): string
+    public function getReferenceId(): ?string
     {
         return $this->referenceId;
     }
@@ -38,7 +38,7 @@ abstract class Shipment implements ShipmentContract
         return $this;
     }
 
-    public function getExternalId(): string
+    public function getExternalId(): ?string
     {
         return $this->externalId;
     }
@@ -87,7 +87,7 @@ abstract class Shipment implements ShipmentContract
         return $this;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
