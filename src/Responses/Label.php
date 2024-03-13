@@ -9,7 +9,7 @@ use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Label extends ResponseAbstract implements ResponseContract
 {
-    private $data;
+    private $data = null;
 
     public function __construct(?string $data)
     {

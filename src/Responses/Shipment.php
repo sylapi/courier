@@ -10,8 +10,8 @@ use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Shipment extends ResponseAbstract implements ResponseContract
 {
-    private ?string $shipmentId;
-    private ?Booking $booking;
+    private ?string $shipmentId = null;
+    private ?Booking $booking = null;
 
     public function setShipmentId(string $ShipmentId): Shipment
     {

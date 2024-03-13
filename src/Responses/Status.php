@@ -10,7 +10,7 @@ use Sylapi\Courier\Contracts\Response as ResponseContract;
 class Status extends ResponseAbstract implements ResponseContract
 {
     public function __construct(
-        private ?string $statusName, 
+        private ?string $statusName = null, 
         private ?string $originalStatusName = null)
     {
 

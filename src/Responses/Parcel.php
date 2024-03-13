@@ -9,9 +9,9 @@ use Sylapi\Courier\Contracts\Response as ResponseContract;
 
 class Parcel extends ResponseAbstract implements ResponseContract
 {
-    private ?string $shipmentId;
-    private ?string $trackingId;
-    private ?string $trackingUrl;
+    private ?string $shipmentId = null;
+    private ?string $trackingId = null;
+    private ?string $trackingUrl = null;
 
     public function setShipmentId(string $shipmentId): Parcel
     {
