@@ -2,119 +2,106 @@
 
 namespace Sylapi\Courier;
 
-use Sylapi\Courier\Common\AbstractCourier;
-use Sylapi\Courier\Common\HelperValidate;
+use Sylapi\Courier\Contracts\Parcel;
+use Sylapi\Courier\Contracts\Sender;
+use Sylapi\Courier\Contracts\Booking;
+use Sylapi\Courier\Contracts\Options;
+use Sylapi\Courier\Contracts\Service;
+use Sylapi\Courier\Contracts\Receiver;
+use Sylapi\Courier\Contracts\Shipment;
+use Sylapi\Courier\Contracts\LabelType;
+use Sylapi\Courier\Contracts\CourierGetLabels;
+use Sylapi\Courier\Contracts\CourierMakeParcel;
+use Sylapi\Courier\Contracts\CourierMakeSender;
+use Sylapi\Courier\Contracts\CourierGetStatuses;
+use Sylapi\Courier\Contracts\CourierMakeBooking;
+use Sylapi\Courier\Contracts\CourierMakeOptions;
+use Sylapi\Courier\Contracts\CourierMakeService;
+use Sylapi\Courier\Contracts\CourierMakeReceiver;
+use Sylapi\Courier\Contracts\CourierMakeShipment;
+use Sylapi\Courier\Contracts\CourierPostShipment;
+use Sylapi\Courier\Contracts\CourierMakeLabelType;
+use Sylapi\Courier\Contracts\CourierCreateShipment;
+use Sylapi\Courier\Responses\Label as ResponseLabel;
+use Sylapi\Courier\Responses\Parcel as ResponseParcel;
+use Sylapi\Courier\Responses\Shipment as ResponseShipment;
+use Sylapi\Courier\Responses\Status as ResponseStatus;
 
-/**
- * Class Courier.
- */
-class Courier extends AbstractCourier
+class Courier implements Contracts\Courier
 {
-    /**
-     * Courier constructor.
-     *
-     * @param null $courier
-     */
-    public function __construct($courier = null)
-    {
-        $this->courier = $courier;
+    public function __construct(
+        private CourierCreateShipment $createShipment,
+        private CourierPostShipment $postShipment,
+        private CourierGetLabels $getLabels,
+        private CourierGetStatuses $getStatuses,
+        private CourierMakeShipment $makeShipment,
+        private CourierMakeParcel $makeParcel,
+        private CourierMakeReceiver $makeReceiver,
+        private CourierMakeSender $makeSender,
+        private CourierMakeService $makeService,
+        private CourierMakeOptions $makeOptions,
+        private CourierMakeBooking $makeBooking,
+        private CourierMakeLabelType $makeLabelType
+    ) {
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function validateAddress($name = 'receiver')
+    public function createShipment(Shipment $shipment): ResponseShipment
     {
-        $validate = HelperValidate::validateAddress($this->params[$name]);
-
-        if (is_array($validate)) {
-            $this->setError($validate);
-
-            return false;
-        }
-
-        return true;
+        return $this->createShipment->createShipment($shipment);
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function validateData(array $parameters = [])
+    public function postShipment(Booking $booking): ResponseParcel
     {
-        return $this->createRequest('\Sylapi\Courier\Message\ValidateData', $parameters);
+        return $this->postShipment->postShipment($booking);
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function checkPrice(array $parameters = [])
+    public function getLabel(string $shipmentId, LabelType $labelType): ResponseLabel
     {
-        return $this->createRequest('\Sylapi\Courier\Message\CheckPrice', $parameters);
+        return $this->getLabels->getLabel($shipmentId, $labelType);
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function getPackage(array $parameters = [])
+    public function getStatus(string $shipmentId): ResponseStatus
     {
-        return $this->createRequest('\Sylapi\Courier\Message\GetPackage', $parameters);
+        return $this->getStatuses->getStatus($shipmentId);
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function createPackage(array $parameters = [])
+    public function makeShipment(): Shipment
     {
-        return $this->createRequest('\Sylapi\Courier\Message\CreatePackage', $parameters);
+        return $this->makeShipment->makeShipment();
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function deletePackage(array $parameters = [])
+    public function makeParcel(): Parcel
     {
-        return $this->createRequest('\Sylapi\Courier\Message\DeletePackage', $parameters);
+        return $this->makeParcel->makeParcel();
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function getLabel(array $parameters = [])
+    public function makeReceiver(): Receiver
     {
-        return $this->createRequest('\Sylapi\Courier\Message\GetLabel', $parameters);
+        return $this->makeReceiver->makeReceiver();
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function getLabels(array $parameters = [])
+    public function makeSender(): Sender
     {
-        return $this->createRequest('\Sylapi\Courier\Message\GetLabels', $parameters);
+        return $this->makeSender->makeSender();
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return mixed
-     */
-    public function getParcel(array $parameters = [])
+    public function makeService(?string $serviceType = null): Service
     {
-        return $this->createRequest('\Sylapi\Courier\Message\GetParcel', $parameters);
+        return $this->makeService->makeService($serviceType);
+    }      
+
+    public function makeOptions(): Options
+    {
+        return $this->makeOptions->makeOptions();
+    }    
+
+    public function makeBooking(): Booking
+    {
+        return $this->makeBooking->makeBooking();
+    }
+
+    public function makeLabelType(): LabelType
+    {
+        return $this->makeLabelType->makeLabelType();
     }
 }
