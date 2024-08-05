@@ -14,5 +14,7 @@ interface ParameterBag
 
     public function set(string $key, mixed $value): void;
 
-    public function all(): array;    
+    public function all(): array; 
+    
+    public function pushArray(array $parameters): self;
 }

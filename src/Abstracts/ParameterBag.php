@@ -39,4 +39,10 @@ abstract class ParameterBag implements ParameterBagContract
     {
         return $this->parameters;
     }    
+
+    public function pushArray(array $parameters): self
+    {
+        $this->parameters = array_merge($this->parameters, $parameters);
+        return $this;
+    }
 }
