@@ -24,7 +24,7 @@ abstract class Shipment implements ShipmentContract
     private $parcels;
     private $content;
     private $services = [];
-    private $options = [];
+    private $options;
 
     public function getReferenceId(): ?string
     {
